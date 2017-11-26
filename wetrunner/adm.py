@@ -49,6 +49,10 @@ def get_M(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     M["UsV"] = get_UsV(Etas, mb, mc, mtau)
 
     M["UeV"] = get_UeV(Etas, Alphaem, Alphas, mb, mc, mtau)
+    
+    M["UsVnu"] = 0.5*np.eye(18)
+    
+    M["UeVnu"] = M["UsVnu"]
 
     """class 6"""
     M["UsVIa"] = np.array([[(-1 + 4*Etas**(9/46))/(3*Etas**(3/23)), (16*(-1 + Etas**(9/46)))/(3*Etas**(3/23)), 0, 0, 0], [(1 - Etas**(9/46))/(12*Etas**(3/23)), (4 - Etas**(9/46))/(3*Etas**(3/23)), 0, 0, 0], [0, 0, (-1 + 16*Etas**(9/46) - 3*Etas**(6/23))/(12*Etas**(3/23)), Etas**(-3/23) - Etas**(3/23), (64*(-1 + Etas**(9/46)))/(3*Etas**(3/23))], [0, 0, (1 - 16*Etas**(9/46) + 15*Etas**(6/23))/(48*Etas**(3/23)), (-1 + 5*Etas**(6/23))/(4*Etas**(3/23)), (-16*(-1 + Etas**(9/46)))/(3*Etas**(3/23))], [0, 0, (1 - 4*Etas**(9/46) + 3*Etas**(6/23))/(192*Etas**(3/23)), (-1 + Etas**(6/23))/(16*Etas**(3/23)), (4 - Etas**(9/46))/(3*Etas**(3/23))]])
