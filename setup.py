@@ -12,5 +12,5 @@ setup(name='wetrunner',
       'smeftrunner':['tests/data/*',
               ]
       },
-      install_requires=['numpy'],
+      install_requires=['numpy', 'rundec>=0.5', 'wcxf'],
     )

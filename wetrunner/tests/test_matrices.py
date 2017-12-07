@@ -1,5 +1,5 @@
-import wetrunner.adm
-from wetrunner.adm import get_M, M
+import wetrunner.evmat
+from wetrunner.evmat import get_M, M
 import numpy as np
 import numpy.testing as npt
 import json
