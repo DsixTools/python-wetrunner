@@ -1,6 +1,5 @@
 import wcxf
-from . import rge
-from . import qcd
+from wetrunner import rge, qcd, parameters
 
 class WET(object):
     """docstring for WET."""
@@ -8,20 +7,32 @@ class WET(object):
         assert isinstance(wc, wcxf.WC)
         self.scale_in = wc.scale
         self.C_in = wc.dict
-        self.parameters = self._get_parameters(self.scale_in)
+        self.p = self._get_parameters(self.scale_in)
 
-    def _get_parameters(self, scale):
-        return {'m_b': 4.2, 'm_c': 1.2, 'm_tau': 1.777, 'alpha_s': 0.1185}
+    def _get_parameters(self, scale):        
+        return parameters.p
 
-    def run(self, scale):
-        alphas_in = self.parameters['alpha_s']
-        alphae_in = self.parameters['alpha_e']
-        alphas_out = rge.alpha_s(scale, n_flav=5)
+    def run(self, scale_out, 
+            alphas_in = parameters.p['alpha_s'], 
+            alphae_in = parameters.p['alpha_e'], 
+            mb = parameters.p['m_b'], 
+            mc = parameters.p['m_c'], 
+            mtau = parameters.p['m_tau'], 
+            betas = parameters.p['betas']):
+        alphas_out = qcd.alpha_s(scale_out, n_flav=5)
         Etas = alphas_in/alphas_out
-        mb = self.parameters['m_b']
-        mc = self.parameters['m_c']
-        mtau = self.parameters['m_tau']
-        return rge.C_out(self.C_in, Etas, alphas_in, alphae_in, mb, mc, mtau)
+        return rge.C_out(self.C_in, Etas, alphas_in, alphae_in, mb, mc, mtau, betas)
         
+    def run_wcxf(self, scale_out,
+                  alphas_in = parameters.p['alpha_s'], 
+                  alphae_in = parameters.p['alpha_e'], 
+                  mb = parameters.p['m_b'], 
+                  mc = parameters.p['m_c'], 
+                  mtau = parameters.p['m_tau'], 
+                  betas = parameters.p['betas']):
+         alphas_out = qcd.alpha_s(scale_out, n_flav=5)
+         Etas = alphas_in/alphas_out
+         return wcxf.WC(eft = 'WET', basis = 'AFGV', scale = scale_out, values = wcxf.WC.dict2values(rge.C_out(self.C_in, Etas, alphas_in, alphae_in, mb, mc, mtau, betas)))
         
-    
+    def dump_wcxf(self, C, scale_out):
+        return wcxf.WC(eft = 'WET', basis = 'AFGV', scale = scale_out, values = wcxf.WC.dict2values(C))
