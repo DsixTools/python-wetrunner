@@ -52,8 +52,8 @@ C512_keys = ['1sbdd', '2sbdd', '3sbdd', '4sbdd', '5sbdd', '6sbdd', '7sbdd', '8sb
 C513_keys = ['1sbcc', '2sbcc', '3sbcc', '4sbcc', '5sbcc', '6sbcc', '7sbcc', '8sbcc', '9sbcc', '10sbcc']
 C514_keys = ['1sbss', '3sbss', '5sbss', '7sbss', '9sbss']
 C515_keys = ['1sbbb', '3sbbb', '5sbbb', '7sbbb', '9sbbb']
-C516_keys = ['7gammas']
-C517_keys = ['8gs']
+C516_keys = ['7gammasb']
+C517_keys = ['8gsb']
 C518_keys = ['1sbee', '3sbee', '5sbee', '7sbee', '9sbee']
 C519_keys = ['1sbmumu', '3sbmumu', '5sbmumu', '7sbmumu', '9sbmumu']
 C5110_keys = ['1sbtautau', '3sbtautau', '5sbtautau', '7sbtautau', '9sbtautau']
@@ -63,8 +63,8 @@ C512_keys = ['1psbdd', '2psbdd', '3psbdd', '4psbdd', '5psbdd', '6psbdd', '7psbdd
 C513_keys = ['1psbcc', '2psbcc', '3psbcc', '4psbcc', '5psbcc', '6psbcc', '7psbcc', '8psbcc', '9psbcc', '10psbcc']
 C514_keys = ['1psbss', '3psbss', '5psbss', '7psbss', '9psbss']
 C515_keys = ['1psbbb', '3psbbb', '5psbbb', '7psbbb', '9psbbb']
-C516_keys = ['7pgammas']
-C517_keys = ['8pgs']
+C516_keys = ['7pgammasb']
+C517_keys = ['8pgsb']
 C518_keys = ['1psbee', '3psbee', '5psbee', '7psbee', '9psbee']
 C519_keys = ['1psbmumu', '3psbmumu', '5psbmumu', '7psbmumu', '9psbmumu']
 C5110_keys = ['1psbtautau', '3psbtautau', '5psbtautau', '7psbtautau', '9psbtautau']
@@ -74,8 +74,8 @@ C512_keys = ['1dbdd', '3dbdd', '5dbdd', '7dbdd', '9dbdd']
 C513_keys = ['1dbcc', '2dbcc', '3dbcc', '4dbcc', '5dbcc', '6dbcc', '7dbcc', '8dbcc', '9dbcc', '10dbcc']
 C514_keys = ['1dbss', '2dbss', '3dbss', '4dbss', '5dbss', '6dbss', '7dbss', '8dbss', '9dbss', '10dbss']
 C515_keys = ['1dbbb', '3dbbb', '5dbbb', '7dbbb', '9dbbb']
-C516_keys = ['7gammad']
-C517_keys = ['8gd']
+C516_keys = ['7gammadb']
+C517_keys = ['8gdb']
 C518_keys = ['1dbee', '3dbee', '5dbee', '7dbee', '9dbee']
 C519_keys = ['1dbmumu', '3dbmumu', '5dbmumu', '7dbmumu', '9dbmumu']
 C5110_keys = ['1dbtautau', '3dbtautau', '5dbtautau', '7dbtautau', '9dbtautau']
@@ -85,8 +85,8 @@ C512_keys = ['1pdbdd', '3pdbdd', '5pdbdd', '7pdbdd', '9pdbdd']
 C513_keys = ['1pdbcc', '2pdbcc', '3pdbcc', '4pdbcc', '5pdbcc', '6pdbcc', '7pdbcc', '8pdbcc', '9pdbcc', '10pdbcc']
 C514_keys = ['1pdbss', '2pdbss', '3pdbss', '4pdbss', '5pdbss', '6pdbss', '7pdbss', '8pdbss', '9pdbss', '10pdbss']
 C515_keys = ['1pdbbb', '3pdbbb', '5pdbbb', '7pdbbb', '9pdbbb']
-C516_keys = ['7pgammad']
-C517_keys = ['8pgd']
+C516_keys = ['7pgammadb']
+C517_keys = ['8pgdb']
 C518_keys = ['1pdbee', '3pdbee', '5pdbee', '7pdbee', '9pdbee']
 C519_keys = ['1pdbmumu', '3pdbmumu', '5pdbmumu', '7pdbmumu', '9pdbmumu']
 C5110_keys = ['1pdbtautau', '3pdbtautau', '5pdbtautau', '7pdbtautau', '9pdbtautau']
@@ -121,8 +121,8 @@ C52_keys.append(['1pdbtaumu', '3pdbtaumu', '5pdbtaumu', '7pdbtaumu', '9pdbtaumu'
 U5b_keys = ['UsVb', 'UeVb']
 
 #class 5nu:
-C53_keys.append(['Ldbee', 'Lsbee', 'Ldbemu', 'Ldbmue', 'Lsbemu', 'Lsbmue', 'Ldbetau', 'Ldbmumu', 'Ldbtaue', 'Lsbetau', 'Lsbmumu', 'Lsbtaue', 'Ldbmutau', 'Ldbtaumu', 'Lsbmutau', 'Lsbtaumu', 'Ldbtautau', 'Lsbtautau'])
-C53_keys.append(['Rdbee', 'Rsbee', 'Rdbemu', 'Rdbmue', 'Rsbemu', 'Rsbmue', 'Rdbetau', 'Rdbmumu', 'Rdbtaue', 'Rsbetau', 'Rsbmumu', 'Rsbtaue', 'Rdbmutau', 'Rdbtaumu', 'Rsbmutau', 'Rsbtaumu', 'Rdbtautau', 'Rsbtautau'])
+C53_keys.append(['nu1dbee', 'nu1sbee', 'nu1dbemu', 'nu1dbmue', 'nu1sbemu', 'nu1sbmue', 'nu1dbetau', 'nu1dbmumu', 'nu1dbtaue', 'nu1sbetau', 'nu1sbmumu', 'nu1sbtaue', 'nu1dbmutau', 'nu1dbtaumu', 'nu1sbmutau', 'nu1sbtaumu', 'nu1dbtautau', 'nu1sbtautau'])
+C53_keys.append(['nu1pdbee', 'nu1psbee', 'nu1pdbemu', 'nu1pdbmue', 'nu1psbemu', 'nu1psbmue', 'nu1pdbetau', 'nu1pdbmumu', 'nu1pdbtaue', 'nu1psbetau', 'nu1psbmumu', 'nu1psbtaue', 'nu1pdbmutau', 'nu1pdbtaumu', 'nu1psbmutau', 'nu1psbtaumu', 'nu1pdbtautau', 'nu1psbtautau'])
 U5nu_keys = ['UsVnu', 'UeVnu']
 
 #class 6a:
@@ -146,5 +146,5 @@ U6f_keys = ['UsVIf', 'UeVIf']
 #class 6g:
 U6g_keys = ['UsVIg', 'UeVIg']
 
-U_keys = [U1_keys] + [U2_keys] + [U3_keys] + [U4_keys] + [U5_keys] + [U5b_keys] + [U5nu_keys] + [U6a_keys] + [U6b_keys] + [U6c_keys] + [U6d_keys] + [U6e_keys] + [U6f_keys] + [U6g_keys]
-C_keys = [C1_keys] + [C2_keys] + [C3_keys] + [C4_keys] + [C51_keys] + [C52_keys] + [C53_keys] + [C61_keys] + [C62_keys] + [C63_keys] + [C64_keys] + [C65_keys] + [C66_keys] + [C67_keys]
+U_keys = [U1_keys] + [U2_keys] + [U3_keys] + [U4_keys] + [U5_keys] + [U5nu_keys] #+ [U5b_keys] + [U5nu_keys] + [U6a_keys] + [U6b_keys] + [U6c_keys] + [U6d_keys] + [U6e_keys] + [U6f_keys] + [U6g_keys]
+C_keys = [C1_keys] + [C2_keys] + [C3_keys] + [C4_keys] + [C51_keys] + [C53_keys] #+ [C52_keys] + [C53_keys] + [C61_keys] + [C62_keys] + [C63_keys] + [C64_keys] + [C65_keys] + [C66_keys] + [C67_keys]
