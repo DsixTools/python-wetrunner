@@ -87,10 +87,10 @@ def UeV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return get_UeV(Etas, Alphaem, Alphas, mb, mc, mtau)
 
 def UsVnu(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
-    return 0.5*np.eye(18)
+    return np.eye(18)
 
 def UeVnu(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
-    return UsVnu()
+    return np.eye(18)
 
     """class 6"""
 def UsVIa(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
