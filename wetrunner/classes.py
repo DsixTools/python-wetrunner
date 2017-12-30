@@ -21,7 +21,7 @@ class WET(object):
             mc=parameters.p['m_c'],
             mtau=parameters.p['m_tau'],
             betas=parameters.p['betas']):
-        alphas_out = qcd.alpha_s(scale_out, n_flav=5)
+        alphas_out = qcd.alpha_s(scale_out, f=5)
         Etas = alphas_in / alphas_out
         return rge.C_out(self.C_in, Etas, alphas_in, alphae_in, mb, mc, mtau, betas)
 
@@ -32,7 +32,7 @@ class WET(object):
                  mc=parameters.p['m_c'],
                  mtau=parameters.p['m_tau'],
                  betas=parameters.p['betas']):
-        alphas_out = qcd.alpha_s(scale_out, n_flav=5)
+        alphas_out = qcd.alpha_s(scale_out, f=5)
         Etas = alphas_in / alphas_out
         C_out = rge.C_out(self.C_in, Etas, alphas_in,
                           alphae_in, mb, mc, mtau, betas)
