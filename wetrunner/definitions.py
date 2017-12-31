@@ -146,5 +146,5 @@ U6f_keys = ['UsVIf', 'UeVIf']
 #class 6g:
 U6g_keys = ['UsVIg', 'UeVIg']
 
-U_keys = [U1_keys] + [U2_keys] + [U3_keys] + [U4_keys] + [U5_keys] + [U5nu_keys] #+ [U5b_keys] + [U5nu_keys] + [U6a_keys] + [U6b_keys] + [U6c_keys] + [U6d_keys] + [U6e_keys] + [U6f_keys] + [U6g_keys]
-C_keys = [C1_keys] + [C2_keys] + [C3_keys] + [C4_keys] + [C51_keys] + [C53_keys] #+ [C52_keys] + [C53_keys] + [C61_keys] + [C62_keys] + [C63_keys] + [C64_keys] + [C65_keys] + [C66_keys] + [C67_keys]
+U_keys = [U1_keys] + [U2_keys] + [U3_keys] + [U4_keys] + [U5_keys] + [U5b_keys] + [U5nu_keys]  #+ [U6a_keys] + [U6b_keys] + [U6c_keys] + [U6d_keys] + [U6e_keys] + [U6f_keys] + [U6g_keys]
+C_keys = [C1_keys] + [C2_keys] + [C3_keys] + [C4_keys] + [C51_keys] + [C52_keys] + [C53_keys]  #+ [C61_keys] + [C62_keys] + [C63_keys] + [C64_keys] + [C65_keys] + [C66_keys] + [C67_keys]
