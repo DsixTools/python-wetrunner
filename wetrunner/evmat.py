@@ -96,7 +96,7 @@ def UsVnu(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.eye(18)
 
 def UeVnu(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
-    return np.eye(18)
+    return np.zeros((18, 18))
 
 def UsVIa(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-1 + 4*Etas**(9/46))/(3*Etas**(3/23)), (16*(-1 + Etas**(9/46)))/(3*Etas**(3/23)), 0, 0, 0],
