@@ -25,7 +25,6 @@ class TestFlavio(unittest.TestCase):
                                            alphae_in=0).translate('flavio')
         wc_out_wetrunner.validate()
         for k, v in self.wc_out.dict.items():
-            if 'b' in k:  # only b-flavored WCs implemented
-                self.assertAlmostEqual(v, wc_out_wetrunner.dict[k],
-                                       delta=0.1,
-                                       msg="Failed for {}".format(k))
+            self.assertAlmostEqual(v, wc_out_wetrunner.dict[k],
+                                   delta=0.1,
+                                   msg="Failed for {}".format(k))
