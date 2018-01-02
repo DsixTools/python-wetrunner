@@ -35,16 +35,11 @@ class TestClass(unittest.TestCase):
 
     def test_run(self):
         C_out = self.wet.run(4.2)
-        # missing keys since sector Vb not implemented
-        misskeys = [k for l in wetrunner.definitions.C52_keys for k in l]
         # assert all input WCs are present in the output
         # (not vice versa as RGE can generate them from zero)
         for k in self.wet.C_in:
-            # only implemented for b-flavored WCs so far
-            if 'b' in k and not 'dsbb' in k:
-                if k not in misskeys:
-                    self.assertTrue(k in C_out,
-                                    msg='{} missing in output'.format(k))
+            self.assertTrue(k in C_out,
+                            msg='{} missing in output'.format(k))
 
     def test_wcxf(self):
         C_out = self.wet.run(4.2)
