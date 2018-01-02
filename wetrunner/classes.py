@@ -1,5 +1,6 @@
 import wcxf
-from wetrunner import rge, qcd, parameters
+from wcxf.util import qcd
+from wetrunner import rge, parameters
 
 
 class WET(object):
@@ -15,23 +16,23 @@ class WET(object):
         return parameters.p
 
     def run(self, scale_out,
-            alphas_in=parameters.p['alpha_s'],
             alphae_in=parameters.p['alpha_e'],
             mb=parameters.p['m_b'],
             mc=parameters.p['m_c'],
             mtau=parameters.p['m_tau'],
             betas=parameters.p['betas']):
+        alphas_in = qcd.alpha_s(self.scale_in, f=5)
         alphas_out = qcd.alpha_s(scale_out, f=5)
         Etas = alphas_in / alphas_out
         return rge.C_out(self.C_in, Etas, alphas_in, alphae_in, mb, mc, mtau, betas)
 
     def run_wcxf(self, scale_out,
-                 alphas_in=parameters.p['alpha_s'],
                  alphae_in=parameters.p['alpha_e'],
                  mb=parameters.p['m_b'],
                  mc=parameters.p['m_c'],
                  mtau=parameters.p['m_tau'],
                  betas=parameters.p['betas']):
+        alphas_in = qcd.alpha_s(self.scale_in, f=5)
         alphas_out = qcd.alpha_s(scale_out, f=5)
         Etas = alphas_in / alphas_out
         C_out = rge.C_out(self.C_in, Etas, alphas_in,
