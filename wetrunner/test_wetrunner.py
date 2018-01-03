@@ -33,8 +33,12 @@ class TestClass(unittest.TestCase):
         self.assertEqual(self.wet.scale_in, 160)
         self.assertEqual(self.wet.C_in, self.wc.dict)
 
+    def test_wcxf(self):
+        wc = self.wet.run(4.2)
+        wc.validate()
+
     def test_run(self):
-        C_out = self.wet.run(4.2)
+        C_out = self.wet.run(4.2).dict
         # assert all input WCs are present in the output
         # (not vice versa as RGE can generate them from zero)
         for k in self.wet.C_in:
@@ -42,22 +46,3 @@ class TestClass(unittest.TestCase):
             if ('ds' not in k and 'sd' not in k) or 'nu' in k:
                 self.assertTrue(k in C_out,
                                 msg='{} missing in output'.format(k))
-
-    def test_wcxf(self):
-        C_out = self.wet.run(4.2)
-        wc = wcxf.WC('WET', 'Bern', 4.2, wcxf.WC.dict2values(C_out))
-        wc.validate()
-
-    def test_dump_wcxf(self):
-        C_out = self.wet.run(4.2)
-        wc = self.wet.dump_wcxf(C_out, 4.2)
-        wc.validate()
-
-    def test_run_wcxf(self):
-        wc1 = self.wet.run_wcxf(4.2)
-        C_out = self.wet.run(4.2)
-        wc2 = self.wet.dump_wcxf(C_out, 4.2)
-        self.assertEqual(wc1.eft, wc2.eft)
-        self.assertEqual(wc1.basis, wc2.basis)
-        self.assertEqual(wc1.scale, wc2.scale)
-        self.assertDictEqual(wc1.dict, wc2.dict)
