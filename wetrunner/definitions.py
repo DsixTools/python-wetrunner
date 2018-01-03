@@ -9,42 +9,10 @@ C1_keys.append(['1dsds', '2dsds', '3dsds', '4dsds', '5dsds', '1pdsds', '2pdsds',
 U1_keys = ['UsI','UeI']
 
 #class 2:
-C2_keys.append(['1ubee', '5ubee', '1pubee', '5pubee', '7pubee'])
-C2_keys.append(['1ubemu', '5ubemu', '1pubemu', '5pubemu', '7pubemu'])
-C2_keys.append(['1ubetau', '5ubetau', '1pubetau', '5pubetau', '7pubetau'])
-C2_keys.append(['1ubmue', '5ubmue', '1pubmue', '5pubmue', '7pubmue'])
-C2_keys.append(['1ubmumu', '5ubmumu', '1pubmumu', '5pubmumu', '7pubmumu'])
-C2_keys.append(['1ubmutau', '5ubmutau', '1pubmutau', '5pubmutau', '7pubmutau'])
-C2_keys.append(['1ubtaue', '5ubtaue', '1pubtaue', '5pubtaue', '7pubtaue'])
-C2_keys.append(['1ubtaumu', '5ubtaumu', '1pubtaumu', '5pubtaumu', '7pubtaumu'])
-C2_keys.append(['1ubtautau', '5ubtautau', '1pubtautau', '5pubtautau', '7pubtautau'])
-C2_keys.append(['1cbee', '5cbee', '1pcbee', '5pcbee', '7pcbee'])
-C2_keys.append(['1cbemu', '5cbemu', '1pcbemu', '5pcbemu', '7pcbemu'])
-C2_keys.append(['1cbetau', '5cbetau', '1pcbetau', '5pcbetau', '7pcbetau'])
-C2_keys.append(['1cbmue', '5cbmue', '1pcbmue', '5pcbmue', '7pcbmue'])
-C2_keys.append(['1cbmumu', '5cbmumu', '1pcbmumu', '5pcbmumu', '7pcbmumu'])
-C2_keys.append(['1cbmutau', '5cbmutau', '1pcbmutau', '5pcbmutau', '7pcbmutau'])
-C2_keys.append(['1cbtaue', '5cbtaue', '1pcbtaue', '5pcbtaue', '7pcbtaue'])
-C2_keys.append(['1cbtaumu', '5cbtaumu', '1pcbtaumu', '5pcbtaumu', '7pcbtaumu'])
-C2_keys.append(['1cbtautau', '5cbtautau', '1pcbtautau', '5pcbtautau', '7pcbtautau'])
-C2_keys.append(['1usee', '5usee', '1pusee', '5pusee', '7pusee'])
-C2_keys.append(['1usemu', '5usemu', '1pusemu', '5pusemu', '7pusemu'])
-C2_keys.append(['1usetau', '5usetau', '1pusetau', '5pusetau', '7pusetau'])
-C2_keys.append(['1usmue', '5usmue', '1pusmue', '5pusmue', '7pusmue'])
-C2_keys.append(['1usmumu', '5usmumu', '1pusmumu', '5pusmumu', '7pusmumu'])
-C2_keys.append(['1usmutau', '5usmutau', '1pusmutau', '5pusmutau', '7pusmutau'])
-C2_keys.append(['1ustaue', '5ustaue', '1pustaue', '5pustaue', '7pustaue'])
-C2_keys.append(['1ustaumu', '5ustaumu', '1pustaumu', '5pustaumu', '7pustaumu'])
-C2_keys.append(['1ustautau', '5ustautau', '1pustautau', '5pustautau', '7pustautau'])
-C2_keys.append(['1csee', '5csee', '1pcsee', '5pcsee', '7pcsee'])
-C2_keys.append(['1csemu', '5csemu', '1pcsemu', '5pcsemu', '7pcsemu'])
-C2_keys.append(['1csetau', '5csetau', '1pcsetau', '5pcsetau', '7pcsetau'])
-C2_keys.append(['1csmue', '5csmue', '1pcsmue', '5pcsmue', '7pcsmue'])
-C2_keys.append(['1csmumu', '5csmumu', '1pcsmumu', '5pcsmumu', '7pcsmumu'])
-C2_keys.append(['1csmutau', '5csmutau', '1pcsmutau', '5pcsmutau', '7pcsmutau'])
-C2_keys.append(['1cstaue', '5cstaue', '1pcstaue', '5pcstaue', '7pcstaue'])
-C2_keys.append(['1cstaumu', '5cstaumu', '1pcstaumu', '5pcstaumu', '7pcstaumu'])
-C2_keys.append(['1cstautau', '5cstautau', '1pcstautau', '5pcstautau', '7pcstautau'])
+for qq in ['cb', 'ub', 'us', 'cs', 'cd', 'ud']:
+    for l in ['e', 'mu', 'tau']:
+        for lp in ['e', 'mu', 'tau']:
+            C2_keys.append(['1'+qq+l+lp, '5'+qq+l+lp, '1p'+qq+l+lp, '5p'+qq+l+lp, '7p'+qq+l+lp])
 U2_keys = ['UsII','UeII']
 
 #class 3:
