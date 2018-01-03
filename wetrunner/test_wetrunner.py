@@ -38,8 +38,10 @@ class TestClass(unittest.TestCase):
         # assert all input WCs are present in the output
         # (not vice versa as RGE can generate them from zero)
         for k in self.wet.C_in:
-            self.assertTrue(k in C_out,
-                            msg='{} missing in output'.format(k))
+            # ignore ds-flavored operators except sdnunu
+            if ('ds' not in k and 'sd' not in k) or 'nu' in k:
+                self.assertTrue(k in C_out,
+                                msg='{} missing in output'.format(k))
 
     def test_wcxf(self):
         C_out = self.wet.run(4.2)
