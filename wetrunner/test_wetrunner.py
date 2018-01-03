@@ -28,6 +28,9 @@ class TestClass(unittest.TestCase):
     def test_init(self):
         with self.assertRaises(AssertionError):
             wetrunner.WET(0)  # argument is not a WC instance
+        wcf = get_random_wc('WET', 'flavio', 160)  # wrong basis
+        with self.assertRaises(AssertionError):
+            wetrunner.WET(wcf)
 
     def test_attr(self):
         self.assertEqual(self.wet.scale_in, 160)
@@ -39,6 +42,28 @@ class TestClass(unittest.TestCase):
 
     def test_run(self):
         C_out = self.wet.run(4.2).dict
+        # assert all input WCs are present in the output
+        # (not vice versa as RGE can generate them from zero)
+        for k in self.wet.C_in:
+            # ignore ds-flavored operators except sdnunu
+            if ('ds' not in k and 'sd' not in k) or 'nu' in k:
+                self.assertTrue(k in C_out,
+                                msg='{} missing in output'.format(k))
+
+
+class TestClassWET4(unittest.TestCase):
+
+    @classmethod
+    def setUpClass(cls):
+        cls.wc = get_random_wc('WET-4', 'Bern', 4)
+        cls.wet = wetrunner.WET(cls.wc)
+
+    def test_wcxf(self):
+        wc = self.wet.run(1.2)
+        wc.validate()
+
+    def test_run(self):
+        C_out = self.wet.run(1.2).dict
         # assert all input WCs are present in the output
         # (not vice versa as RGE can generate them from zero)
         for k in self.wet.C_in:
