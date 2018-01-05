@@ -2,144 +2,98 @@
 
 C1_keys, C2_keys, C3_keys, C4_keys, C51_keys, C52_keys, C53_keys, C61_keys, C62_keys, C63_keys, C64_keys, C65_keys, C66_keys, C67_keys,= [], [], [], [], [], [], [], [], [], [], [], [], [], []
 
-#class 1:
-C1_keys.append(['1sbsb', '2sbsb', '3sbsb', '4sbsb', '5sbsb', '1psbsb', '2psbsb', '3psbsb'])
-C1_keys.append(['1dbdb', '2dbdb', '3dbdb', '4dbdb', '5dbdb', '1pdbdb', '2pdbdb', '3pdbdb'])
-C1_keys.append(['1dsds', '2dsds', '3dsds', '4dsds', '5dsds', '1pdsds', '2pdsds', '3pdsds'])
-U1_keys = ['UsI','UeI']
 
-#class 2:
+# class 1
+for qq in ['sb', 'db', 'ds']:
+    # e.g. 1sbsb
+    C1_keys.append(['{}{}{}'.format(i, qq, qq)
+                    for i in ['1', '2', '3', '4', '5', '1p', '2p', '3p']])
+U1_keys = ['UsI', 'UeI']
+
+
+# class 2
 for qq in ['cb', 'ub', 'us', 'cs', 'cd', 'ud']:
     for l in ['e', 'mu', 'tau']:
         for lp in ['e', 'mu', 'tau']:
-            C2_keys.append(['1'+qq+l+lp, '5'+qq+l+lp, '1p'+qq+l+lp, '5p'+qq+l+lp, '7p'+qq+l+lp])
-U2_keys = ['UsII','UeII']
+            # e.g. 1cbemu
+            C2_keys.append(['{}{}{}{}'.format(i, qq, l, lp)
+                            for i in ['1', '5', '1p', '5p', '7p']])
+U2_keys = ['UsII', 'UeII']
 
-#class 3:
-C3_keys.append(['1sbuc', '2sbuc', '3sbuc', '4sbuc', '5sbuc', '6sbuc', '7sbuc', '8sbuc', '9sbuc', '10sbuc'])
-C3_keys.append(['1psbuc', '2psbuc', '3psbuc', '4psbuc', '5psbuc', '6psbuc', '7psbuc', '8psbuc', '9psbuc', '10psbuc'])
-C3_keys.append(['1dbuc', '2dbuc', '3dbuc', '4dbuc', '5dbuc', '6dbuc', '7dbuc', '8dbuc', '9dbuc', '10dbuc'])
-C3_keys.append(['1pdbuc', '2pdbuc', '3pdbuc', '4pdbuc', '5pdbuc', '6pdbuc', '7pdbuc', '8pdbuc', '9pdbuc', '10pdbuc'])
-C3_keys.append(['1sbcu', '2sbcu', '3sbcu', '4sbcu', '5sbcu', '6sbcu', '7sbcu', '8sbcu', '9sbcu', '10sbcu'])
-C3_keys.append(['1psbcu', '2psbcu', '3psbcu', '4psbcu', '5psbcu', '6psbcu', '7psbcu', '8psbcu', '9psbcu', '10psbcu'])
-C3_keys.append(['1dbcu', '2dbcu', '3dbcu', '4dbcu', '5dbcu', '6dbcu', '7dbcu', '8dbcu', '9dbcu', '10dbcu'])
-C3_keys.append(['1pdbcu', '2pdbcu', '3pdbcu', '4pdbcu', '5pdbcu', '6pdbcu', '7pdbcu', '8pdbcu', '9pdbcu', '10pdbcu'])
-C3_keys.append(['1dsuc', '2dsuc', '3dsuc', '4dsuc', '5dsuc', '6dsuc', '7dsuc', '8dsuc', '9dsuc', '10dsuc'])
-C3_keys.append(['1pdsuc', '2pdsuc', '3pdsuc', '4pdsuc', '5pdsuc', '6pdsuc', '7pdsuc', '8pdsuc', '9pdsuc', '10pdsuc'])
-C3_keys.append(['1dscu', '2dscu', '3dscu', '4dscu', '5dscu', '6dscu', '7dscu', '8dscu', '9dscu', '10dscu'])
-C3_keys.append(['1pdscu', '2pdscu', '3pdscu', '4pdscu', '5pdscu', '6pdscu', '7pdscu', '8pdscu', '9pdscu', '10pdscu'])
-U3_keys = ['UsIII','UeIII']
+# class 3
+for dd in ['sb', 'db', 'ds']:
+    for uu in ['uc', 'cu']:
+        for p in ['', 'p']:
+            # e.g. 1sbuc
+            C3_keys.append(['{}{}{}{}'.format(i, p, dd, uu)
+                            for i in range(1, 11)])
+U3_keys = ['UsIII', 'UeIII']
 
-#class 4:
-C4_keys.append(['1sbsd', '3sbsd', '5sbsd', '7sbsd', '9sbsd'])
-C4_keys.append(['1psbsd', '3psbsd', '5psbsd', '7psbsd', '9psbsd'])
-C4_keys.append(['1dbds', '3dbds', '5dbds', '7dbds', '9dbds'])
-C4_keys.append(['1pdbds', '3pdbds', '5pdbds', '7pdbds', '9pdbds'])
-U4_keys = ['UsIV','UeIV']
+# class 4
+for qq in ['sbsd', 'dbds']:
+    for p in ['', 'p']:
+        # e.g. 1sbsd
+        C4_keys.append(['{}{}{}'.format(i, p, qq)
+                        for i in range(1, 11, 2)])
+U4_keys = ['UsIV', 'UeIV']
 
-#class 5:
-C511_keys = ['1sbuu', '2sbuu', '3sbuu', '4sbuu', '5sbuu', '6sbuu', '7sbuu', '8sbuu', '9sbuu', '10sbuu']
-C512_keys = ['1sbdd', '2sbdd', '3sbdd', '4sbdd', '5sbdd', '6sbdd', '7sbdd', '8sbdd', '9sbdd', '10sbdd']
-C513_keys = ['1sbcc', '2sbcc', '3sbcc', '4sbcc', '5sbcc', '6sbcc', '7sbcc', '8sbcc', '9sbcc', '10sbcc']
-C514_keys = ['1sbss', '3sbss', '5sbss', '7sbss', '9sbss']
-C515_keys = ['1sbbb', '3sbbb', '5sbbb', '7sbbb', '9sbbb']
-C516_keys = ['7gammasb']
-C517_keys = ['8gsb']
-C518_keys = ['1sbee', '3sbee', '5sbee', '7sbee', '9sbee']
-C519_keys = ['1sbmumu', '3sbmumu', '5sbmumu', '7sbmumu', '9sbmumu']
-C5110_keys = ['1sbtautau', '3sbtautau', '5sbtautau', '7sbtautau', '9sbtautau']
-C51_keys.append(C511_keys + C512_keys + C513_keys + C514_keys + C515_keys + C516_keys + C517_keys + C518_keys + C519_keys + C5110_keys)
-C511_keys = ['1psbuu', '2psbuu', '3psbuu', '4psbuu', '5psbuu', '6psbuu', '7psbuu', '8psbuu', '9psbuu', '10psbuu']
-C512_keys = ['1psbdd', '2psbdd', '3psbdd', '4psbdd', '5psbdd', '6psbdd', '7psbdd', '8psbdd', '9psbdd', '10psbdd']
-C513_keys = ['1psbcc', '2psbcc', '3psbcc', '4psbcc', '5psbcc', '6psbcc', '7psbcc', '8psbcc', '9psbcc', '10psbcc']
-C514_keys = ['1psbss', '3psbss', '5psbss', '7psbss', '9psbss']
-C515_keys = ['1psbbb', '3psbbb', '5psbbb', '7psbbb', '9psbbb']
-C516_keys = ['7pgammasb']
-C517_keys = ['8pgsb']
-C518_keys = ['1psbee', '3psbee', '5psbee', '7psbee', '9psbee']
-C519_keys = ['1psbmumu', '3psbmumu', '5psbmumu', '7psbmumu', '9psbmumu']
-C5110_keys = ['1psbtautau', '3psbtautau', '5psbtautau', '7psbtautau', '9psbtautau']
-C51_keys.append(C511_keys + C512_keys + C513_keys + C514_keys + C515_keys + C516_keys + C517_keys + C518_keys + C519_keys + C5110_keys)
-C511_keys = ['1dbuu', '2dbuu', '3dbuu', '4dbuu', '5dbuu', '6dbuu', '7dbuu', '8dbuu', '9dbuu', '10dbuu']
-C512_keys = ['1dbss', '2dbss', '3dbss', '4dbss', '5dbss', '6dbss', '7dbss', '8dbss', '9dbss', '10dbss']
-C513_keys = ['1dbcc', '2dbcc', '3dbcc', '4dbcc', '5dbcc', '6dbcc', '7dbcc', '8dbcc', '9dbcc', '10dbcc']
-C514_keys = ['1dbdd', '3dbdd', '5dbdd', '7dbdd', '9dbdd']
-C515_keys = ['1dbbb', '3dbbb', '5dbbb', '7dbbb', '9dbbb']
-C516_keys = ['7gammadb']
-C517_keys = ['8gdb']
-C518_keys = ['1dbee', '3dbee', '5dbee', '7dbee', '9dbee']
-C519_keys = ['1dbmumu', '3dbmumu', '5dbmumu', '7dbmumu', '9dbmumu']
-C5110_keys = ['1dbtautau', '3dbtautau', '5dbtautau', '7dbtautau', '9dbtautau']
-C51_keys.append(C511_keys + C512_keys + C513_keys + C514_keys + C515_keys + C516_keys + C517_keys + C518_keys + C519_keys + C5110_keys)
-C511_keys = ['1pdbuu', '2pdbuu', '3pdbuu', '4pdbuu', '5pdbuu', '6pdbuu', '7pdbuu', '8pdbuu', '9pdbuu', '10pdbuu']
-C512_keys = ['1pdbss', '2pdbss', '3pdbss', '4pdbss', '5pdbss', '6pdbss', '7pdbss', '8pdbss', '9pdbss', '10pdbss']
-C513_keys = ['1pdbcc', '2pdbcc', '3pdbcc', '4pdbcc', '5pdbcc', '6pdbcc', '7pdbcc', '8pdbcc', '9pdbcc', '10pdbcc']
-C514_keys = ['1pdbdd', '3pdbdd', '5pdbdd', '7pdbdd', '9pdbdd']
-C515_keys = ['1pdbbb', '3pdbbb', '5pdbbb', '7pdbbb', '9pdbbb']
-C516_keys = ['7pgammadb']
-C517_keys = ['8pgdb']
-C518_keys = ['1pdbee', '3pdbee', '5pdbee', '7pdbee', '9pdbee']
-C519_keys = ['1pdbmumu', '3pdbmumu', '5pdbmumu', '7pdbmumu', '9pdbmumu']
-C5110_keys = ['1pdbtautau', '3pdbtautau', '5pdbtautau', '7pdbtautau', '9pdbtautau']
-C51_keys.append(C511_keys + C512_keys + C513_keys + C514_keys + C515_keys + C516_keys + C517_keys + C518_keys + C519_keys + C5110_keys)
-U5_keys = ['UsV','UeV']
+# class 5
+for qq in ['sb', 'db']:
+    for p in ['', 'p']:
+        _C = []
+        for pp in ['uu', 'dd', 'cc', 'ss', 'bb']:
+            if pp[0] in qq:
+                _C += ['{}{}{}{}'.format(i, p, qq, pp)
+                       for i in range(1, 11, 2)]  # 1, 3, 5, 7, 9
+            else:
+                _C += ['{}{}{}{}'.format(i, p, qq, pp)
+                       for i in range(1, 11)]  # 1, 2, ..., 10
+        _C += ['7{}gamma{}'.format(p, qq),
+               '8{}g{}'.format(p, qq)]
+        for l in ['e', 'mu', 'tau']:
+            # e.g. 1sbee
+            _C += ['{}{}{}{}'.format(i, p, qq, 2 * l)
+                   for i in range(1, 11, 2)]  # 1, 3, 5, 7, 9
+        C51_keys.append(_C)
+U5_keys = ['UsV', 'UeV']
 
-#class 5b:
-C52_keys.append(['1sbemu', '3sbemu', '5sbemu', '7sbemu', '9sbemu'])
-C52_keys.append(['1sbetau', '3sbetau', '5sbetau', '7sbetau', '9sbetau'])
-C52_keys.append(['1sbmue', '3sbmue', '5sbmue', '7sbmue', '9sbmue'])
-C52_keys.append(['1sbmutau', '3sbmutau', '5sbmutau', '7sbmutau', '9sbmutau'])
-C52_keys.append(['1sbtaue', '3sbtaue', '5sbtaue', '7sbtaue', '9sbtaue'])
-C52_keys.append(['1sbtaumu', '3sbtaumu', '5sbtaumu', '7sbtaumu', '9sbtaumu'])
-C52_keys.append(['1dbemu', '3dbemu', '5dbemu', '7dbemu', '9dbemu'])
-C52_keys.append(['1dbetau', '3dbetau', '5dbetau', '7dbetau', '9dbetau'])
-C52_keys.append(['1dbmue', '3dbmue', '5dbmue', '7dbmue', '9dbmue'])
-C52_keys.append(['1dbmutau', '3dbmutau', '5dbmutau', '7dbmutau', '9dbmutau'])
-C52_keys.append(['1dbtaue', '3dbtaue', '5dbtaue', '7dbtaue', '9dbtaue'])
-C52_keys.append(['1dbtaumu', '3dbtaumu', '5dbtaumu', '7dbtaumu', '9dbtaumu'])
-C52_keys.append(['1psbemu', '3psbemu', '5psbemu', '7psbemu', '9psbemu'])
-C52_keys.append(['1psbetau', '3psbetau', '5psbetau', '7psbetau', '9psbetau'])
-C52_keys.append(['1psbmue', '3psbmue', '5psbmue', '7psbmue', '9psbmue'])
-C52_keys.append(['1psbmutau', '3psbmutau', '5psbmutau', '7psbmutau', '9psbmutau'])
-C52_keys.append(['1psbtaue', '3psbtaue', '5psbtaue', '7psbtaue', '9psbtaue'])
-C52_keys.append(['1psbtaumu', '3psbtaumu', '5psbtaumu', '7psbtaumu', '9psbtaumu'])
-C52_keys.append(['1pdbemu', '3pdbemu', '5pdbemu', '7pdbemu', '9pdbemu'])
-C52_keys.append(['1pdbetau', '3pdbetau', '5pdbetau', '7pdbetau', '9pdbetau'])
-C52_keys.append(['1pdbmue', '3pdbmue', '5pdbmue', '7pdbmue', '9pdbmue'])
-C52_keys.append(['1pdbmutau', '3pdbmutau', '5pdbmutau', '7pdbmutau', '9pdbmutau'])
-C52_keys.append(['1pdbtaue', '3pdbtaue', '5pdbtaue', '7pdbtaue', '9pdbtaue'])
-C52_keys.append(['1pdbtaumu', '3pdbtaumu', '5pdbtaumu', '7pdbtaumu', '9pdbtaumu'])
+# class 5b
+for qq in ['sb', 'db']:
+    for l in ['e', 'mu', 'tau']:
+        for lp in ['e', 'mu', 'tau']:
+            for p in ['', 'p']:
+                C52_keys.append(['{}{}{}{}{}'.format(i, p, qq, l, lp)
+                                 for i in range(1, 11, 2)])
 U5b_keys = ['UsVb', 'UeVb']
 
-#class 5nu:
-C53_keys.append(['nu1sbee', 'nu1sbemu', 'nu1sbmue', 'nu1sbetau', 'nu1sbmumu', 'nu1sbtaue', 'nu1sbmutau', 'nu1sbtaumu', 'nu1sbtautau'])
-C53_keys.append(['nu1psbee', 'nu1psbemu', 'nu1psbmue', 'nu1psbetau', 'nu1psbmumu', 'nu1psbtaue', 'nu1psbmutau', 'nu1psbtaumu', 'nu1psbtautau'])
-C53_keys.append(['nu1dbee', 'nu1dbemu', 'nu1dbmue', 'nu1dbetau', 'nu1dbmumu', 'nu1dbtaue', 'nu1dbmutau', 'nu1dbtaumu', 'nu1dbtautau'])
-C53_keys.append(['nu1pdbee', 'nu1pdbemu', 'nu1pdbmue', 'nu1pdbetau', 'nu1pdbmumu', 'nu1pdbtaue', 'nu1pdbmutau', 'nu1pdbtaumu', 'nu1pdbtautau'])
-C53_keys.append(['nu1dsee', 'nu1dsemu', 'nu1dsmue', 'nu1dsetau', 'nu1dsmumu', 'nu1dstaue', 'nu1dsmutau', 'nu1dstaumu', 'nu1dstautau'])
-C53_keys.append(['nu1pdsee', 'nu1pdsemu', 'nu1pdsmue', 'nu1pdsetau', 'nu1pdsmumu', 'nu1pdstaue', 'nu1pdsmutau', 'nu1pdstaumu', 'nu1pdstautau'])
+# class 5nu
+for qq in ['sb', 'db', 'ds']:
+        for p in ['', 'p']:
+            C53_keys.append(['nu1{}{}{}{}'.format(p, qq, l, lp)
+                             for l in ['e', 'mu', 'tau']
+                             for lp in ['e', 'mu', 'tau']])
 U5nu_keys = ['UsVnu', 'UeVnu']
 
-#class 6a:
-U6a_keys = ['UsVIa', 'UeVIa']
-
-#class 6b:
-U6b_keys = ['UsVIb', 'UeVIb']
-
-#class 6c:
-U6c_keys = ['UsVIc', 'UeVIc']
-
-#class 6d:
-U6d_keys = ['UsVId', 'UeVId']
-
-#class 6e:
-U6e_keys = ['UsVIe', 'UeVIe']
-
-#class 6f:
-U6f_keys = ['UsVIf', 'UeVIf']
-
-#class 6g:
-U6g_keys = ['UsVIg', 'UeVIg']
+# #class 6a:
+# U6a_keys = ['UsVIa', 'UeVIa']
+#
+# #class 6b:
+# U6b_keys = ['UsVIb', 'UeVIb']
+#
+# #class 6c:
+# U6c_keys = ['UsVIc', 'UeVIc']
+#
+# #class 6d:
+# U6d_keys = ['UsVId', 'UeVId']
+#
+# #class 6e:
+# U6e_keys = ['UsVIe', 'UeVIe']
+#
+# #class 6f:
+# U6f_keys = ['UsVIf', 'UeVIf']
+#
+# #class 6g:
+# U6g_keys = ['UsVIg', 'UeVIg']
 
 U_keys = [U1_keys] + [U2_keys] + [U3_keys] + [U4_keys] + [U5_keys] + [U5b_keys] + [U5nu_keys]  #+ [U6a_keys] + [U6b_keys] + [U6c_keys] + [U6d_keys] + [U6e_keys] + [U6f_keys] + [U6g_keys]
 C_keys = [C1_keys] + [C2_keys] + [C3_keys] + [C4_keys] + [C51_keys] + [C52_keys] + [C53_keys]  #+ [C61_keys] + [C62_keys] + [C63_keys] + [C64_keys] + [C65_keys] + [C66_keys] + [C67_keys]
