@@ -59,6 +59,7 @@ class WET(object):
                                  Etas, pi['alpha_s'], pi['alpha_e'],
                                  pi['m_b'], pi['m_c'], pi['m_tau'],
                                  betas))
+        C_out = {k: v for k, v in C_out.items() if v != 0}
         return wcxf.WC(eft='WET', basis='Bern',
                        scale=scale_out,
                        values=wcxf.WC.dict2values(C_out))

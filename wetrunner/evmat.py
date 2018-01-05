@@ -2,8 +2,10 @@ import numpy as np
 from math import sqrt, pi, log
 from wetrunner.UsV import get_UsV
 from wetrunner.UeV import get_UeV
+from functools import lru_cache
 
 
+@lru_cache(maxsize=32)
 def UsI(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[Etas**(6/23), 0, 0, 0, 0, 0, 0, 0],
            [0, -((-15 - sqrt(241))*Etas**((1 - sqrt(241))/23))/(2*sqrt(241)) + ((-15 + sqrt(241))*Etas**((1 + sqrt(241))/23))/(2*sqrt(241)), ((-15 - sqrt(241))*(-15 + sqrt(241))*Etas**((1 - sqrt(241))/23))/(4*sqrt(241)) + ((-15 + sqrt(241))*(15 + sqrt(241))*Etas**((1 + sqrt(241))/23))/(4*sqrt(241)), 0, 0, 0, 0, 0],
@@ -14,6 +16,7 @@ def UsI(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
            [0, 0, 0, 0, 0, 0, -((-15 - sqrt(241))*Etas**((1 - sqrt(241))/23))/(2*sqrt(241)) + ((-15 + sqrt(241))*Etas**((1 + sqrt(241))/23))/(2*sqrt(241)), ((-15 - sqrt(241))*(-15 + sqrt(241))*Etas**((1 - sqrt(241))/23))/(4*sqrt(241)) + ((-15 + sqrt(241))*(15 + sqrt(241))*Etas**((1 + sqrt(241))/23))/(4*sqrt(241))],
           [0, 0, 0, 0, 0, 0, -(Etas**((1 - sqrt(241))/23)/sqrt(241)) + Etas**((1 + sqrt(241))/23)/sqrt(241), ((-15 + sqrt(241))*Etas**((1 - sqrt(241))/23))/(2*sqrt(241)) + ((15 + sqrt(241))*Etas**((1 + sqrt(241))/23))/(2*sqrt(241))]])
 
+@lru_cache(maxsize=32)
 def UeI(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[(-2*Alphaem*(Etas**(6/23) - Etas**(29/23)))/(3*Betas*Alphas), 0, 0, 0, 0, 0, 0, 0],
            [0, -(Alphaem*(-((((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (1 - sqrt(241))/23 + (-1 + sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (-1 + sqrt(241))/23 + (1 + sqrt(241))/23)))/sqrt(241)) + (((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(2*(-1 + (-1 - sqrt(241))/23 + (1 - sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(2*(-1 + (-1 - sqrt(241))/23 + (1 + sqrt(241))/23)))/sqrt(241)))/(2*Betas*Alphas), -(Alphaem*(((-15 + sqrt(241))*(((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (1 - sqrt(241))/23 + (-1 + sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (-1 + sqrt(241))/23 + (1 + sqrt(241))/23))))/(2*sqrt(241)) + ((15 + sqrt(241))*(((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(2*(-1 + (-1 - sqrt(241))/23 + (1 - sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(2*(-1 + (-1 - sqrt(241))/23 + (1 + sqrt(241))/23))))/(2*sqrt(241))))/(2*Betas*Alphas), 0, 0, 0, 0, 0],
@@ -24,6 +27,7 @@ def UeI(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
            [0, 0, 0, 0, 0, 0, -(Alphaem*(-((((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/ (9*sqrt(241)) + ((-15 - sqrt(241))*(4/(9*sqrt(241)) +(8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (1 - sqrt(241))/23 + (-1 + sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(-4/(9*sqrt(241)) +(8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (-1 + sqrt(241))/23 + (1 + sqrt(241))/23)))/sqrt(241)) + (((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) +((-15 + sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/ (2*(-1 + (-1 - sqrt(241))/23 + (1 - sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) +((-15 + sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/ (2*(-1 + (-1 - sqrt(241))/23 + (1 + sqrt(241))/23)))/sqrt(241)))/ (2*Betas*Alphas), -(Alphaem*(((-15 + sqrt(241))*(((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)* (-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (1 - sqrt(241))/23 + (-1 + sqrt(241))/23)) +((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/ 2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(2*(-1 + (-1 + sqrt(241))/23 + (1 + sqrt(241))/23))))/(2*sqrt(241)) + ((15 + sqrt(241))*(((-15 - sqrt(241))*(-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/ (9*sqrt(241)) + ((-15 + sqrt(241))*(4/(9*sqrt(241)) +(8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(2*(-1 + (-1 - sqrt(241))/23 + (1 - sqrt(241))/23)) + ((-15 + sqrt(241))*(16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(-4/(9*sqrt(241)) +(8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(2*(-1 + (-1 - sqrt(241))/23 + (1 + sqrt(241))/23))))/(2*sqrt(241))))/(2*Betas*Alphas)],
           [0, 0, 0, 0, 0, 0, -(Alphaem*(-((((-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/ 2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(-1 + (1 - sqrt(241))/23 + (-1 + sqrt(241))/23) +((16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 - sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/ 2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(-1 + (-1 + sqrt(241))/23 + (1 + sqrt(241))/23))/sqrt(241)) + (((-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) +((-15 + sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/ (-1 + (-1 - sqrt(241))/23 + (1 - sqrt(241))/23) + ((16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) +((-15 + sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/ (-1 + (-1 - sqrt(241))/23 + (1 + sqrt(241))/23))/sqrt(241)))/(2*Betas*Alphas), -(Alphaem*(((-15 + sqrt(241))*(((-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/ (9*sqrt(241)) + ((-15 - sqrt(241))*(4/(9*sqrt(241)) +(8*(-15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(-1 + (1 - sqrt(241))/23 +(-1 + sqrt(241))/23) + ((16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/ (9*sqrt(241)) + ((-15 - sqrt(241))*(-4/(9*sqrt(241)) +(8*(15 + sqrt(241)))/(9*sqrt(241))))/2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 - sqrt(241))/23)))/(-1 + (-1 + sqrt(241))/23 +(1 + sqrt(241))/23)))/(2*sqrt(241)) + ((15 + sqrt(241))*(((-16/(9*sqrt(241)) - (2*(-15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(4/(9*sqrt(241)) + (8*(-15 + sqrt(241)))/(9*sqrt(241))))/ 2)*(-Etas**((1 - sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(-1 + (-1 - sqrt(241))/23 + (1 - sqrt(241))/23) +((16/(9*sqrt(241)) - (2*(15 + sqrt(241)))/(9*sqrt(241)) + ((-15 + sqrt(241))*(-4/(9*sqrt(241)) + (8*(15 + sqrt(241)))/(9*sqrt(241))))/ 2)*(-Etas**((1 + sqrt(241))/23) + Etas**(1 + (1 + sqrt(241))/23)))/(-1 + (-1 - sqrt(241))/23 + (1 + sqrt(241))/23)))/(2*sqrt(241))))/ (2*Betas*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UsII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[1,0,0,0,0],
           [0,1/Etas**(12/23),0,0,0],
@@ -31,6 +35,7 @@ def UsII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
           [0,0,0,1/Etas**(12/23),0],
           [0,0,0,0,Etas**(4/23)]])
 
+@lru_cache(maxsize=32)
 def UeII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[-((6*Alphaem*(-1+Etas))/(23*Alphas)),0,0,0,0],
           [0,(2*Alphaem*(-1+Etas))/(23*Etas**(12/23)*Alphas),0,0,0],
@@ -38,6 +43,7 @@ def UeII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
           [0,0,0,(2*Alphaem*(-1+Etas))/(23*Etas**(12/23)*Alphas),(4*Alphaem*(-1+Etas**(39/23)))/(13*Etas**(12/23)*Alphas)],
           [0,0,0,(Alphaem*(-1+Etas**(7/23))*Etas**(4/23))/(28*Alphas),-((20*Alphaem*(-1+Etas)*Etas**(4/23))/(69*Alphas))]])
 
+@lru_cache(maxsize=32)
 def UsIII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[-((-4+3*Etas**(12/23)-32*Etas**(27/23)+6*Etas**(30/23))/(27*Etas**(24/23))),-((2*(-1+Etas**(3/23))*(1+Etas**(3/23)+Etas**(6/23))*(8+8*Etas**(9/23)+3*Etas**(12/23)+8*Etas**(18/23)+3*Etas**(21/23)))/(81*Etas**(24/23))),-((16*(-1+Etas**(3/23))**3*(1+3*Etas**(3/23)+6*Etas**(6/23)+10*Etas**(9/23)+12*Etas**(12/23)+12*Etas**(15/23)+10*Etas**(18/23)+6*Etas**(21/23)))/(27*Etas**(24/23))),-((32*(-1+Etas**(3/23))*(1+Etas**(3/23)+Etas**(6/23))*(2+2*Etas**(9/23)+3*Etas**(12/23)+2*Etas**(18/23)+3*Etas**(21/23)))/(81*Etas**(24/23))),0,0,0,0,0,0],
           [-(((-1+Etas**(3/23))*(1+Etas**(3/23)+Etas**(6/23))*(8+8*Etas**(9/23)+3*Etas**(12/23)+8*Etas**(18/23)+3*Etas**(21/23)))/(9*Etas**(24/23))),-((-32+6*Etas**(12/23)-4*Etas**(27/23)+3*Etas**(30/23))/(27*Etas**(24/23))),-((16*(-1+Etas**(3/23))*(1+Etas**(3/23)+Etas**(6/23))*(2+2*Etas**(9/23)+3*Etas**(12/23)+2*Etas**(18/23)+3*Etas**(21/23)))/(9*Etas**(24/23))),-((16*(-1+Etas**(3/23))*(8+8*Etas**(3/23)+8*Etas**(6/23)+8*Etas**(9/23)+2*Etas**(12/23)+2*Etas**(15/23)+2*Etas**(18/23)+2*Etas**(21/23)+2*Etas**(24/23)+3*Etas**(27/23)))/(27*Etas**(24/23))),0,0,0,0,0,0],
@@ -50,6 +56,7 @@ def UsIII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
           [0,0,0,0,-((Etas**(-(41/23)-sqrt(241)/23)*(-1687*Etas**(24/23)-97*sqrt(241)*Etas**(24/23)-1205*Etas**(42/23)-77*sqrt(241)*Etas**(42/23)+5784*Etas**(17/23+sqrt(241)/23)-1687*Etas**(24/23+(2*sqrt(241))/23)+97*sqrt(241)*Etas**(24/23+(2*sqrt(241))/23)-1205*Etas**(42/23+(2*sqrt(241))/23)+77*sqrt(241)*Etas**(42/23+(2*sqrt(241))/23)))/277632),(Etas**(-(17/23)-sqrt(241)/23)*(241+sqrt(241)-241*Etas**(18/23)-19*sqrt(241)*Etas**(18/23)+241*Etas**((2*sqrt(241))/23)-sqrt(241)*Etas**((2*sqrt(241))/23)-241*Etas**(18/23+(2*sqrt(241))/23)+19*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/208224,(Etas**(-(17/23)-sqrt(241)/23)*(241-9*sqrt(241)-241*Etas**(18/23)-9*sqrt(241)*Etas**(18/23)+241*Etas**((2*sqrt(241))/23)+9*sqrt(241)*Etas**((2*sqrt(241))/23)-241*Etas**(18/23+(2*sqrt(241))/23)+9*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/23136,(Etas**(-(17/23)-sqrt(241)/23)*(241+21*sqrt(241)-241*Etas**(18/23)-15*sqrt(241)*Etas**(18/23)+241*Etas**((2*sqrt(241))/23)-21*sqrt(241)*Etas**((2*sqrt(241))/23)-241*Etas**(18/23+(2*sqrt(241))/23)+15*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/17352,-((Etas**(-(41/23)-sqrt(241)/23)*(-482*Etas**(24/23)-62*sqrt(241)*Etas**(24/23)-964*Etas**(42/23)-52*sqrt(241)*Etas**(42/23)+723*Etas**(17/23+sqrt(241)/23)-482*Etas**(24/23+(2*sqrt(241))/23)+62*sqrt(241)*Etas**(24/23+(2*sqrt(241))/23)-964*Etas**(42/23+(2*sqrt(241))/23)+52*sqrt(241)*Etas**(42/23+(2*sqrt(241))/23)))/2169),-((4*Etas**(-(17/23)-sqrt(241)/23)*(241+31*sqrt(241)-241*Etas**(18/23)-13*sqrt(241)*Etas**(18/23)+241*Etas**((2*sqrt(241))/23)-31*sqrt(241)*Etas**((2*sqrt(241))/23)-241*Etas**(18/23+(2*sqrt(241))/23)+13*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/6507)],
           [0,0,0,0,(Etas**(-(17/23)-sqrt(241)/23)*(241+sqrt(241)-241*Etas**(18/23)-19*sqrt(241)*Etas**(18/23)+241*Etas**((2*sqrt(241))/23)-sqrt(241)*Etas**((2*sqrt(241))/23)-241*Etas**(18/23+(2*sqrt(241))/23)+19*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/46272,-((Etas**(-(17/23)-sqrt(241)/23)*(-1205+67*sqrt(241)-1687*Etas**(18/23)+47*sqrt(241)*Etas**(18/23)-1205*Etas**((2*sqrt(241))/23)-67*sqrt(241)*Etas**((2*sqrt(241))/23)+5784*Etas**(20/23+sqrt(241)/23)-1687*Etas**(18/23+(2*sqrt(241))/23)-47*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/277632),-((Etas**(-(17/23)-sqrt(241)/23)*(-241+15*sqrt(241)+241*Etas**(18/23)-21*sqrt(241)*Etas**(18/23)-241*Etas**((2*sqrt(241))/23)-15*sqrt(241)*Etas**((2*sqrt(241))/23)+241*Etas**(18/23+(2*sqrt(241))/23)+21*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/3856),-((Etas**(-(17/23)-sqrt(241)/23)*(241-39*sqrt(241)-241*Etas**(18/23)-39*sqrt(241)*Etas**(18/23)+241*Etas**((2*sqrt(241))/23)+39*sqrt(241)*Etas**((2*sqrt(241))/23)-241*Etas**(18/23+(2*sqrt(241))/23)+39*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/23136),2/723*Etas**(-(17/23)-sqrt(241)/23)*(-241+23*sqrt(241)+241*Etas**(18/23)-41*sqrt(241)*Etas**(18/23)-241*Etas**((2*sqrt(241))/23)-23*sqrt(241)*Etas**((2*sqrt(241))/23)+241*Etas**(18/23+(2*sqrt(241))/23)+41*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)),-((Etas**(-(17/23)-sqrt(241)/23)*(-964+92*sqrt(241)-482*Etas**(18/23)+82*sqrt(241)*Etas**(18/23)-964*Etas**((2*sqrt(241))/23)-92*sqrt(241)*Etas**((2*sqrt(241))/23)+723*Etas**(20/23+sqrt(241)/23)-482*Etas**(18/23+(2*sqrt(241))/23)-82*sqrt(241)*Etas**(18/23+(2*sqrt(241))/23)))/2169)]])
 
+@lru_cache(maxsize=32)
 def UeIII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(4*Alphaem*(-4-3*Etas**(12/23)+4*Etas-32*Etas**(27/23)-6*Etas**(30/23)+3*Etas**(35/23)+32*Etas**(50/23)+6*Etas**(53/23)))/(621*Etas**(24/23)*Alphas),(8*Alphaem*(-8+3*Etas**(12/23)+8*Etas+8*Etas**(27/23)-3*Etas**(30/23)-3*Etas**(35/23)-8*Etas**(50/23)+3*Etas**(53/23)))/(1863*Etas**(24/23)*Alphas),(64*Alphaem*(-1-3*Etas**(12/23)+Etas-8*Etas**(27/23)-6*Etas**(30/23)+3*Etas**(35/23)+8*Etas**(50/23)+6*Etas**(53/23)))/(621*Etas**(24/23)*Alphas),(128*Alphaem*(-2+3*Etas**(12/23)+2*Etas+2*Etas**(27/23)-3*Etas**(30/23)-3*Etas**(35/23)-2*Etas**(50/23)+3*Etas**(53/23)))/(1863*Etas**(24/23)*Alphas),0,0,0,0,0,0],
           [-((4*Alphaem*(-1+Etas)*(-8+3*Etas**(12/23)+8*Etas**(27/23)-3*Etas**(30/23)))/(207*Etas**(24/23)*Alphas)),(4*Alphaem*(-32-6*Etas**(12/23)+32*Etas-4*Etas**(27/23)-3*Etas**(30/23)+6*Etas**(35/23)+4*Etas**(50/23)+3*Etas**(53/23)))/(621*Etas**(24/23)*Alphas),(64*Alphaem*(-2+3*Etas**(12/23)+2*Etas+2*Etas**(27/23)-3*Etas**(30/23)-3*Etas**(35/23)-2*Etas**(50/23)+3*Etas**(53/23)))/(207*Etas**(24/23)*Alphas),(64*Alphaem*(-8-6*Etas**(12/23)+8*Etas-Etas**(27/23)-3*Etas**(30/23)+6*Etas**(35/23)+Etas**(50/23)+3*Etas**(53/23)))/(621*Etas**(24/23)*Alphas),0,0,0,0,0,0],
@@ -62,6 +69,7 @@ def UeIII(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
           [0,0,0,0,1/(2839824195776640*Alphas)*Alphaem*Etas**(1/23*(-41-sqrt(241)))*(1565*(1810756633+65317743*sqrt(241))*Etas**(24/23)+9799*(1452996953+94328273*sqrt(241))*Etas**(42/23)-9799*(1590134147+102533077*sqrt(241))*Etas**(47/23)-313*(4760468903+272297007*sqrt(241))*Etas**(65/23)-1565*(-1810756633+65317743*sqrt(241))*Etas**(2/23*(12+sqrt(241)))-12861522625800*Etas**(1/23*(17+sqrt(241)))-9799*(-1452996953+94328273*sqrt(241))*Etas**(2/23*(21+sqrt(241)))+12861522625800*Etas**(1/23*(40+sqrt(241)))+9799*(-1590134147+102533077*sqrt(241))*Etas**(1/23*(47+2*sqrt(241)))+313*(-4760468903+272297007*sqrt(241))*Etas**(1/23*(65+2*sqrt(241)))),-(1/(2129868146832480*Alphas))*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(313*(-220121447+182235993*sqrt(241))-9799*(135420551+4335173*sqrt(241))*Etas**(18/23)+9799*(126821189+8298133*sqrt(241))*Etas-313*(-489339173+160789713*sqrt(241))*Etas**(41/23)-313*(220121447+182235993*sqrt(241))*Etas**((2*sqrt(241))/23)-9799*(-126821189+8298133*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+9799*(-135420551+4335173*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+313*(489339173+160789713*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),1/(709956048944160*Alphas)*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(-313*(7119663211+531593741*sqrt(241))-68593*(-5279587+2023381*sqrt(241))*Etas**(18/23)-9799*(146334959+10079017*sqrt(241))*Etas-313*(-10543923761+403716791*sqrt(241))*Etas**(41/23)+313*(-7119663211+531593741*sqrt(241))*Etas**((2*sqrt(241))/23)+9799*(-146334959+10079017*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+68593*(5279587+2023381*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+313*(10543923761+403716791*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),-(1/(532467036708120*Alphas))*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(148675*(-1437083+516233*sqrt(241))-9799*(720333817+49206167*sqrt(241))*Etas**(18/23)+9799*(848720783+54525163*sqrt(241))*Etas-313*(3336758993+127934767*sqrt(241))*Etas**(41/23)-148675*(1437083+516233*sqrt(241))*Etas**((2*sqrt(241))/23)-9799*(-848720783+54525163*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+9799*(-720333817+49206167*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+313*(-3336758993+127934767*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),-(1/(22186126529505*Alphas))*Alphaem*Etas**(1/23*(-41-sqrt(241)))*(-1252*(2021680797+107272807*sqrt(241))*Etas**(24/23)-19598*(354009961+27122985*sqrt(241))*Etas**(42/23)+58794*(120316599+7704505*sqrt(241))*Etas**(47/23)-1252*(-1913049083+16427473*sqrt(241))*Etas**(65/23)+1252*(-2021680797+107272807*sqrt(241))*Etas**(2/23*(12+sqrt(241)))+1607690328225*Etas**(1/23*(17+sqrt(241)))+19598*(-354009961+27122985*sqrt(241))*Etas**(2/23*(21+sqrt(241)))-1607690328225*Etas**(1/23*(40+sqrt(241)))-58794*(-120316599+7704505*sqrt(241))*Etas**(1/23*(47+2*sqrt(241)))+1252*(1913049083+16427473*sqrt(241))*Etas**(1/23*(65+2*sqrt(241)))),-(1/(66558379588515*Alphas))*4*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(72380151057-9855537733*sqrt(241)+68593*(41779519+3205071*sqrt(241))*Etas**(18/23)-29397*(120316599+7704505*sqrt(241))*Etas-313*(-1913049083+16427473*sqrt(241))*Etas**(41/23)+313*(231246489+31487341*sqrt(241))*Etas**((2*sqrt(241))/23)+29397*(-120316599+7704505*sqrt(241))*Etas**(1+(2*sqrt(241))/23)-68593*(-41779519+3205071*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+313*(1913049083+16427473*sqrt(241))*Etas**(1/23*(41+2*sqrt(241))))],
           [0,0,0,0,-(1/(94660806525888*Alphas))*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(313*(-609317167+24630369*sqrt(241))+9799*(71505905+3785939*sqrt(241))*Etas**(18/23)-9799*(14931155+4434067*sqrt(241))*Etas-313*(1161852083+79410633*sqrt(241))*Etas**(41/23)-313*(609317167+24630369*sqrt(241))*Etas**((2*sqrt(241))/23)+9799*(-14931155+4434067*sqrt(241))*Etas**(1+(2*sqrt(241))/23)-9799*(-71505905+3785939*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+313*(-1161852083+79410633*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),1/(2839824195776640*Alphas)*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(4489141766419-322980692661*sqrt(241)-9799*(-1344376807+109924607*sqrt(241))*Etas**(18/23)+9799*(-1207239613+95106043*sqrt(241))*Etas-7825*(745424809+7089903*sqrt(241))*Etas**(41/23)+313*(14342305963+1031887197*sqrt(241))*Etas**((2*sqrt(241))/23)-9799*(1207239613+95106043*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+9799*(1344376807+109924607*sqrt(241))*Etas**(2/23*(9+sqrt(241)))-12861522625800*Etas**(1/23*(20+sqrt(241)))+12861522625800*Etas**(1/23*(43+sqrt(241)))+7825*(-745424809+7089903*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),1/(118326008157360*Alphas)*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(-313*(-87501557+85193483*sqrt(241))-68593*(-105620419+6427759*sqrt(241))*Etas**(18/23)+9799*(-829711667+56013917*sqrt(241))*Etas-7825*(-109665845+21743609*sqrt(241))*Etas**(41/23)+313*(87501557+85193483*sqrt(241))*Etas**((2*sqrt(241))/23)-9799*(829711667+56013917*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+68593*(105620419+6427759*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+7825*(109665845+21743609*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),1/(141991209788832*Alphas)*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(-5947*(-224700929+15835799*sqrt(241))-9799*(460170461+4513627*sqrt(241))*Etas**(18/23)-9799*(-482046031+8053657*sqrt(241))*Etas-313*(4954169761+411706871*sqrt(241))*Etas**(41/23)+5947*(224700929+15835799*sqrt(241))*Etas**((2*sqrt(241))/23)+9799*(482046031+8053657*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+9799*(-460170461+4513627*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+313*(-4954169761+411706871*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),-(1/(7395375509835*Alphas))*2*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(313*(-1479542139+18979181*sqrt(241))-9799*(-548436229+13032309*sqrt(241))*Etas**(18/23)+29397*(-150727907+5640597*sqrt(241))*Etas-1565*(306761429+94064339*sqrt(241))*Etas**(41/23)-313*(1479542139+18979181*sqrt(241))*Etas**((2*sqrt(241))/23)-29397*(150727907+5640597*sqrt(241))*Etas**(1+(2*sqrt(241))/23)+9799*(548436229+13032309*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+1565*(-306761429+94064339*sqrt(241))*Etas**(1/23*(41+2*sqrt(241)))),-(1/(22186126529505*Alphas))*Alphaem*Etas**(1/23*(-17-sqrt(241)))*(626*(1751070573-118128427*sqrt(241))+274372*(-65093377+1559937*sqrt(241))*Etas**(18/23)-117588*(-150727907+5640597*sqrt(241))*Etas-3130*(306761429+94064339*sqrt(241))*Etas**(41/23)+626*(1751070573+118128427*sqrt(241))*Etas**((2*sqrt(241))/23)+117588*(150727907+5640597*sqrt(241))*Etas**(1+(2*sqrt(241))/23)-274372*(65093377+1559937*sqrt(241))*Etas**(2/23*(9+sqrt(241)))+1607690328225*Etas**(1/23*(20+sqrt(241)))-1607690328225*Etas**(1/23*(43+sqrt(241)))+3130*(-306761429+94064339*sqrt(241))*Etas**(1/23*(41+2*sqrt(241))))]])
 
+@lru_cache(maxsize=32)
 def UsIV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[-(1/3)*(-4+Etas**(3/23))*Etas**(3/23),-(16/3)*(-1+Etas**(3/23))*Etas**(3/23),0,0,0],
           [(1/12)*(-1+Etas**(3/23))*Etas**(3/23),(1/3)*(-1+4*Etas**(3/23))*Etas**(3/23),0,0,0],
@@ -69,6 +77,7 @@ def UsIV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
           [-((2*(-1+Etas**(27/23)))/(9*Etas**(24/23))),-((8*(-1+Etas**(27/23)))/(9*Etas**(24/23))),(Etas**(1/23*(-24-sqrt(241)))*((67+4*sqrt(241))*Etas**(25/23)-(8*sqrt(241))*Etas**(sqrt(241)/23)+(-67+4*sqrt(241))*Etas**(1/23*(25+2*sqrt(241)))))/(24*sqrt(241)),(Etas**(1/23*(1-sqrt(241)))*(-36+sqrt(241)+(36+sqrt(241))*Etas**((2*sqrt(241))/23)))/(2*sqrt(241)),(8*Etas**(1/23*(-24-sqrt(241)))*((175+sqrt(241))*Etas**(25/23)-2*sqrt(241)*Etas**(sqrt(241)/23)+(-175+sqrt(241))*Etas**(1/23*(25+2*sqrt(241)))))/(3*sqrt(241))],
           [(1-Etas**(27/23))/(72*Etas**(24/23)),(1-Etas**(27/23))/(18*Etas**(24/23)),(Etas**(1/23*(-24-sqrt(241)))*((16+sqrt(241))*Etas**(25/23)-2*sqrt(241)*Etas**(sqrt(241)/23)+(-16+sqrt(241))*Etas**(1/23*(25+2*sqrt(241)))))/(96*sqrt(241)),(5*Etas**(1/23*(1-sqrt(241)))*(-1+Etas**((2*sqrt(241))/23)))/(8*sqrt(241)),(Etas**(1/23*(-24-sqrt(241)))*(2*(31+sqrt(241))*Etas**(25/23)-sqrt(241)*Etas**(sqrt(241)/23)+2*(-31+sqrt(241))*Etas**(1/23*(25+2*sqrt(241)))))/(3*sqrt(241))]])
 
+@lru_cache(maxsize=32)
 def UeIV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-2*Alphaem*(4 + Etas**(3/23))*(-1 + Etas)*Etas**(3/23))/(69*Alphas), (-32*Alphaem*(Etas**(3/23) + Etas**(6/23))*(-1 + Etas))/(69*Alphas), 0, 0, 0],
            [(Alphaem*(Etas**(3/23) + Etas**(6/23))*(-1 + Etas))/(138*Alphas), (2*Alphaem*(Etas**(3/23) + 4*Etas**(6/23))*(-1 + Etas))/(69*Alphas), 0, 0, 0],
@@ -76,12 +85,15 @@ def UeIV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
            [(4*Alphaem*(1 - Etas - Etas**(27/23) + Etas**(50/23)))/(207*Etas**(24/23)*Alphas), (16*Alphaem*(1 - Etas - Etas**(27/23) + Etas**(50/23)))/(207*Etas**(24/23)*Alphas), (Alphaem*Etas**((-24 - sqrt(241))/23)*((27023 - 862*sqrt(241))*Etas**(25/23) + (12813 + 862*sqrt(241))*Etas**(48/23) - 1160*sqrt(241)*Etas**(sqrt(241)/23) + 1160*sqrt(241)*Etas**(1 + sqrt(241)/23) + (-12813 + 862*sqrt(241))*Etas**((2*(24 + sqrt(241)))/23) - (27023 + 862*sqrt(241))*Etas**((25 + 2*sqrt(241))/23)))/(40020*sqrt(241)*Alphas), -(Alphaem*Etas**((1 - sqrt(241))/23)*(1906 - 979*sqrt(241) + (-2734 + 979*sqrt(241))*Etas - (1906 + 979*sqrt(241))*Etas**((2*sqrt(241))/23) + (2734 + 979*sqrt(241))*Etas**(1 + (2*sqrt(241))/23)))/(10005*sqrt(241)*Alphas), (16*Alphaem*Etas**((-24 - sqrt(241))/23)*((28929 - 1841*sqrt(241))*Etas**(25/23) + (10079 + 1841*sqrt(241))*Etas**(48/23) - 290*sqrt(241)*Etas**(sqrt(241)/23) + 290*sqrt(241)*Etas**(1 + sqrt(241)/23) + (-10079 + 1841*sqrt(241))*Etas**((2*(24 + sqrt(241)))/23) - (28929 + 1841*sqrt(241))*Etas**((25 + 2*sqrt(241))/23)))/(10005*sqrt(241)*Alphas)],
            [(Alphaem*(1 - Etas - Etas**(27/23) + Etas**(50/23)))/(828*Etas**(24/23)*Alphas), (Alphaem*(1 - Etas - Etas**(27/23) + Etas**(50/23)))/(207*Etas**(24/23)*Alphas), (Alphaem*Etas**((-24 - sqrt(241))/23)*((3626 - 19*sqrt(241))*Etas**(25/23) + (146 + 19*sqrt(241))*Etas**(48/23) - 290*sqrt(241)*Etas**(sqrt(241)/23) + 290*sqrt(241)*Etas**(1 + sqrt(241)/23) + (-146 + 19*sqrt(241))*Etas**((2*(24 + sqrt(241)))/23) - (3626 + 19*sqrt(241))*Etas**((25 + 2*sqrt(241))/23)))/(160080*sqrt(241)*Alphas), ((-4591 + 281*sqrt(241))*(4591 + 281*sqrt(241))*Alphaem*Etas**((1 - sqrt(241))/23)*(-793 - 158*sqrt(241) + (-2243 + 158*sqrt(241))*Etas + (793 - 158*sqrt(241))*Etas**((2*sqrt(241))/23) + (2243 + 158*sqrt(241))*Etas**(1 + (2*sqrt(241))/23)))/(81948153600*sqrt(241)*Alphas), (2*Alphaem*Etas**((-24 - sqrt(241))/23)*((5666 - 354*sqrt(241))*Etas**(25/23) + 6*(-699 + 59*sqrt(241))*Etas**(48/23) - 145*sqrt(241)*Etas**(sqrt(241)/23) + 145*sqrt(241)*Etas**(1 + sqrt(241)/23) + 6*(699 + 59*sqrt(241))*Etas**((2*(24 + sqrt(241)))/23) - 2*(2833 + 177*sqrt(241))*Etas**((25 + 2*sqrt(241))/23)))/(10005*sqrt(241)*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UsV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return get_UsV(Etas, mb, mc, mtau)
 
+@lru_cache(maxsize=32)
 def UeV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return get_UeV(Etas, Alphaem, Alphas, mb, mc, mtau)
 
+@lru_cache(maxsize=32)
 def UsVb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[1, 0, 0, 0, 0],
                     [0, 1, 0, 0, 0],
@@ -89,15 +101,12 @@ def UsVb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
                     [0, 0, 0, Etas**(4 / 23), 16/Etas**(12 / 23) - 16 * Etas**(4 / 23)],
                     [0, 0, 0, 0, 1/Etas**(12 / 23)]])
 
+@lru_cache(maxsize=32)
 def UeVb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.zeros((5, 5))  # TODO
 
-def UsVnu(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
-    return np.eye(9)
 
-def UeVnu(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
-    return np.zeros((9, 9))
-
+@lru_cache(maxsize=32)
 def UsVIa(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-1 + 4*Etas**(9/46))/(3*Etas**(3/23)), (16*(-1 + Etas**(9/46)))/(3*Etas**(3/23)), 0, 0, 0],
            [(1 - Etas**(9/46))/(12*Etas**(3/23)), (4 - Etas**(9/46))/(3*Etas**(3/23)), 0, 0, 0],
@@ -105,27 +114,34 @@ def UsVIa(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
            [0, 0, (1 - 16*Etas**(9/46) + 15*Etas**(6/23))/(48*Etas**(3/23)), (-1 + 5*Etas**(6/23))/(4*Etas**(3/23)), (-16*(-1 + Etas**(9/46)))/(3*Etas**(3/23))],
            [0, 0, (1 - 4*Etas**(9/46) + 3*Etas**(6/23))/(192*Etas**(3/23)), (-1 + Etas**(6/23))/(16*Etas**(3/23)), (4 - Etas**(9/46))/(3*Etas**(3/23))]])
 
+@lru_cache(maxsize=32)
 def UsVIb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[1/Etas**(3/92),0],
           [0,1/Etas**(3/46)]])
 
+@lru_cache(maxsize=32)
 def UsVIc(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return UsVIa()
 
+@lru_cache(maxsize=32)
 def UsVId(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[Etas**(3/46), (Etas**(3/46) - Etas**(3/23))/2],
            [0, Etas**(3/23)]])
 
+@lru_cache(maxsize=32)
 def UsVIe(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return UsVIa()
 
+@lru_cache(maxsize=32)
 def UsVIf(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return UsVIb()
 
+@lru_cache(maxsize=32)
 def UsVIg(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[Etas**(3/46),0],
           [0,Etas**(3/23)]])
 
+@lru_cache(maxsize=32)
 def UeVIa(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-8*Alphaem*(1 - 4*Etas**(9/46) - Etas + 4*Etas**(55/46)))/(69*Etas**(3/23)*Alphas), (-128*Alphaem*(1 - Etas**(9/46) - Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas), 0, 0, 0],
           [(2*Alphaem*(1 - Etas**(9/46) - Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas), (8*Alphaem*(4 - Etas**(9/46) - 4*Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas), 0, 0, 0],
@@ -133,10 +149,12 @@ def UeVIa(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
           [0, 0, (Alphaem*(-1921 + 55216*Etas**(9/46) - 64815*Etas**(6/23) + 46081*Etas - 55216*Etas**(55/46) + 20655*Etas**(29/23)))/(544272*Etas**(3/23)*Alphas),(Alphaem*(-5899 + 45095*Etas**(6/23) - 46081*Etas + 6885*Etas**(29/23)))/(45356*Etas**(3/23)*Alphas), (-16*Alphaem*(-136 - 119*Etas**(9/46) + 1725*Etas**(6/23) - 1589*Etas + 119*Etas**(55/46)))/(1173*Etas**(3/23)*Alphas)],
           [0, 0, (Alphaem*(-1921 + 13804*Etas**(9/46) - 12963*Etas**(6/23) + 6061*Etas - 13804*Etas**(55/46) + 8823*Etas**(29/23)))/(2177088*Etas**(3/23)*Alphas),(Alphaem*(-5899 + 9019*Etas**(6/23) - 6061*Etas + 2941*Etas**(29/23)))/(181424*Etas**(3/23)*Alphas), -(Alphaem*(-544 - 119*Etas**(9/46) + 1380*Etas**(6/23) - 836*Etas + 119*Etas**(55/46)))/(1173*Etas**(3/23)*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UeVIb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-8*Alphaem*(-1 + Etas))/(23*Etas**(3/92)*Alphas), 0],
            [0, (-13*Alphaem*(-1 + Etas))/(23*Etas**(3/46)*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UeVIc(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array( [[-(Alphaem*(-1 - 8*Etas**(9/46) + Etas + 8*Etas**(55/46)))/(69*Etas**(3/23)*Alphas), (-16*Alphaem*(-1 - 2*Etas**(9/46) + Etas + 2*Etas**(55/46)))/(69*Etas**(3/23)*Alphas), 0, 0, 0],
           [(Alphaem*(-1 - 2*Etas**(9/46) + Etas + 2*Etas**(55/46)))/(276*Etas**(3/23)*Alphas), (2*Alphaem*(-2 - Etas**(9/46) + 2*Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas), 0, 0, 0],
@@ -144,10 +162,12 @@ def UeVIc(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
            [0, 0, -(Alphaem*(-1 - 32*Etas**(9/46) + 45*Etas**(6/23))*(-1 + Etas))/(1104*Etas**(3/23)*Alphas),-(Alphaem*(1 + 15*Etas**(6/23))*(-1 + Etas))/(92*Etas**(3/23)*Alphas), (16*Alphaem*(-1 - 2*Etas**(9/46) + Etas + 2*Etas**(55/46)))/(69*Etas**(3/23)*Alphas)],
           [0, 0, -(Alphaem*(-1 - 8*Etas**(9/46) + 9*Etas**(6/23))*(-1 + Etas))/(4416*Etas**(3/23)*Alphas), -(Alphaem*(-1 - 3*Etas**(6/23) + Etas + 3*Etas**(29/23)))/(368*Etas**(3/23)*Alphas),(2*Alphaem*(-2 - Etas**(9/46) + 2*Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UeVId(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-2*Alphaem*(-1 + Etas)*Etas**(3/46))/(23*Alphas), (Alphaem*(-2 + 3*Etas**(3/46))*(-1 + Etas)*Etas**(3/46))/(46*Alphas)],
            [0, (-3*Alphaem*(-1 + Etas)*Etas**(3/23))/(23*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UeVIe(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-2*Alphaem*(1 - 4*Etas**(9/46) - Etas + 4*Etas**(55/46)))/(69*Etas**(3/23)*Alphas), (-32*Alphaem*(1 - Etas**(9/46) - Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas), 0, 0, 0],
            [(Alphaem*(1 - Etas**(9/46) - Etas + Etas**(55/46)))/(138*Etas**(3/23)*Alphas), (2*Alphaem*(4 - Etas**(9/46) - 4*Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas), 0, 0, 0],
@@ -155,10 +175,12 @@ def UeVIe(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
            [0, 0, -(Alphaem*(1 - 16*Etas**(9/46) + 15*Etas**(6/23))*(-1 + Etas))/(552*Etas**(3/23)*Alphas), -(Alphaem*(1 - 5*Etas**(6/23) - Etas + 5*Etas**(29/23)))/(46*Etas**(3/23)*Alphas), (32*Alphaem*(1 - Etas**(9/46) - Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas)],
            [0, 0, -(Alphaem*(-1 + 4*Etas**(9/46) - 3*Etas**(6/23) + Etas - 4*Etas**(55/46) + 3*Etas**(29/23)))/(2208*Etas**(3/23)*Alphas), -(Alphaem*(1 - Etas**(6/23) - Etas + Etas**(29/23)))/(184*Etas**(3/23)*Alphas), (2*Alphaem*(4 - Etas**(9/46) - 4*Etas + Etas**(55/46)))/(69*Etas**(3/23)*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UeVIf(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-2*Alphaem*(-1 + Etas))/(23*Etas**(3/92)*Alphas), 0],
            [0, (-2*Alphaem*(-1 + Etas))/(23*Etas**(3/46)*Alphas)]])
 
+@lru_cache(maxsize=32)
 def UeVIg(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return np.array([[(-2*Alphaem*(-1 + Etas)*Etas**(3/46))/(23*Alphas), 0],
            [0, (-2*Alphaem*(-1 + Etas)*Etas**(3/23))/(23*Alphas)]])
