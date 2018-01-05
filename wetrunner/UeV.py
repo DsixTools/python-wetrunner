@@ -1,4 +1,7 @@
-import numpy as np 
+"""QED evolution matrix for sector V."""
+
+
+import numpy as np
 
 
 def get_UeV(Etas, Alphaem, Alphas, mb, mc, mtau):

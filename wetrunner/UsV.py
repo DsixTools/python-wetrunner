@@ -1,4 +1,7 @@
-import numpy as np 
+"""QCD evolution matrix for sector V."""
+
+
+import numpy as np
 
 
 def get_UsV(Etas, mb, mc, mtau):

@@ -1,3 +1,7 @@
+"""Function to perform the RG evolution for Wilson coefficients of a given
+sector."""
+
+
 from wetrunner import evmat
 from wetrunner.definitions import sectors
 from collections import OrderedDict

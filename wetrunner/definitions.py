@@ -1,3 +1,6 @@
+"""Dictionaries assigning Wilson coefficients to classes and sectors,
+needed to construct appropriate vectors."""
+
 from collections import defaultdict
 
 
