@@ -18,6 +18,20 @@ def get_random_wc(eft, basis, scale, cmax=1e-2):
     return wcxf.WC(eft, basis, scale, wcxf.WC.dict2values(_wc))
 
 
+class TestDef(unittest.TestCase):
+
+    def test_sectors(self):
+        for sname, sdict in wetrunner.definitions.sectors.items():
+            # there should only be one class per sector
+            self.assertEqual(len(list(sdict.keys())), 1)
+            self.assertIn(sname, wcxf.Basis['WET', 'Bern'].sectors.keys())
+            for cname, clists in sdict.items():
+                for clist in clists:
+                    for c in clist:
+                        allkeys = wcxf.Basis['WET', 'Bern'].sectors[sname].keys()
+                        self.assertIn(c, allkeys)
+
+
 class TestClass(unittest.TestCase):
 
     @classmethod

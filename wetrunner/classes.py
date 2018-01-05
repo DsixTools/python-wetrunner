@@ -1,7 +1,9 @@
 import wcxf
 from wcxf.util import qcd
-from wetrunner import rge
+from wetrunner import rge, definitions
 from wetrunner.parameters import p as default_parameters
+from collections import OrderedDict
+
 
 class WET(object):
     """docstring for WET."""
@@ -39,7 +41,7 @@ class WET(object):
         p['m_tau'] = self.parameters['m_tau']
         return p
 
-    def run(self, scale_out, parameters=None):
+    def run(self, scale_out, parameters=None, sectors='all'):
         pi = self._get_running_parameters(self.scale_in, self.f)
         po = self._get_running_parameters(scale_out, self.f)
         betas = self._betas(self.f)
@@ -49,10 +51,14 @@ class WET(object):
             # evolution matrices
             Etas = Etas**(self._betas(5) / self._betas(self.f))
             pi['alpha_e'] = 0  # because QED evolution is not consistent yet
-        C_out = rge.C_out(self.C_in,
-                          Etas, pi['alpha_s'], pi['alpha_e'],
-                          pi['m_b'], pi['m_c'], pi['m_tau'],
-                          betas)
+        C_out = OrderedDict()
+        for sector in wcxf.EFT[self.eft].sectors:
+            if sector in definitions.sectors:
+                if sectors == 'all' or sector in sectors:
+                    C_out.update(rge.run_sector(sector, self.C_in,
+                                 Etas, pi['alpha_s'], pi['alpha_e'],
+                                 pi['m_b'], pi['m_c'], pi['m_tau'],
+                                 betas))
         return wcxf.WC(eft='WET', basis='Bern',
                        scale=scale_out,
                        values=wcxf.WC.dict2values(C_out))
