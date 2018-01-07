@@ -37,14 +37,14 @@ class TestClass(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.wc = get_random_wc('WET', 'Bern', 160)
-        cls.wet = wetrunner.WET(cls.wc)
+        cls.wet = wetrunner.WETrunner(cls.wc)
 
     def test_init(self):
         with self.assertRaises(AssertionError):
-            wetrunner.WET(0)  # argument is not a WC instance
+            wetrunner.WETrunner(0)  # argument is not a WC instance
         wcf = get_random_wc('WET', 'flavio', 160)  # wrong basis
         with self.assertRaises(AssertionError):
-            wetrunner.WET(wcf)
+            wetrunner.WETrunner(wcf)
 
     def test_attr(self):
         self.assertEqual(self.wet.scale_in, 160)
@@ -70,7 +70,7 @@ class TestClassWET4(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
         cls.wc = get_random_wc('WET-4', 'Bern', 4)
-        cls.wet = wetrunner.WET(cls.wc)
+        cls.wet = wetrunner.WETrunner(cls.wc)
 
     def test_wcxf(self):
         wc = self.wet.run(1.2)

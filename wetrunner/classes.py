@@ -9,7 +9,7 @@ from wetrunner.parameters import p as default_parameters
 from collections import OrderedDict
 
 
-class WET(object):
+class WETrunner(object):
     """Class representing a point in Wilson coefficient space.
 
     Methods:

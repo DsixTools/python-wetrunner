@@ -4,4 +4,4 @@ the weak effective theory."""
 
 from . import rge
 from . import parameters
-from .classes import WET
+from .classes import WETrunner

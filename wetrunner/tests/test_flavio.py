@@ -20,7 +20,7 @@ class TestFlavio(unittest.TestCase):
         self.wc_out.validate()
 
     def test_run(self):
-        wet_in = wetrunner.WET(self.wc_in.translate('Bern'), {'alpha_e': 0})
+        wet_in = wetrunner.WETrunner(self.wc_in.translate('Bern'), {'alpha_e': 0})
         wc_out_wetrunner = wet_in.run(5).translate('flavio')
         wc_out_wetrunner.validate()
         for k, v in self.wc_out.dict.items():
