@@ -8,9 +8,7 @@ setup(name='wetrunner',
       description='A Python package for the renormalization group evolution in the Weak Effective Theory (WET).',
       license='MIT',
       packages=find_packages(),
-      package_data={
-      'smeftrunner':['tests/data/*',
-              ]
-      },
-      install_requires=['numpy', 'rundec>=0.5', 'wcxf'],
-    )
+      package_data={'wetrunner': ['tests/data/*']},
+      extras_require={'testing': ['nose']},
+      install_requires=['numpy', 'rundec>=0.5', 'wcxf>=1.2'],
+      )
