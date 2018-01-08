@@ -1,7 +1,9 @@
 import unittest
 import wetrunner
+from wetrunner import evmat
 import wcxf
 import numpy as np
+import numpy.testing as npt
 
 np.random.seed(112)
 
@@ -63,6 +65,24 @@ class TestClass(unittest.TestCase):
             if ('ds' not in k and 'sd' not in k) or 'nu' in k:
                 self.assertTrue(k in C_out,
                                 msg='{} missing in output'.format(k))
+
+
+class TestEvolutionMatrices(unittest.TestCase):
+    def test_inverse_s(self):
+        # check inverse of QCD evolution matrices
+        args = (0.12, 1/128, 4.2, 1.2, 1.77, 23/3)
+        npt.assert_array_almost_equal(evmat.UsI(0.123, *args),
+                                      np.linalg.inv(evmat.UsI(1/0.123, *args)))
+        npt.assert_array_almost_equal(evmat.UsII(0.123, *args),
+                                      np.linalg.inv(evmat.UsII(1/0.123, *args)))
+        npt.assert_array_almost_equal(evmat.UsIII(0.123, *args),
+                                      np.linalg.inv(evmat.UsIII(1/0.123, *args)))
+        npt.assert_array_almost_equal(evmat.UsIV(0.123, *args),
+                                      np.linalg.inv(evmat.UsIV(1/0.123, *args)))
+        npt.assert_array_almost_equal(evmat.UsV(0.123, *args),
+                                      np.linalg.inv(evmat.UsV(1/0.123, *args)))
+        npt.assert_array_almost_equal(evmat.UsVb(0.123, *args),
+                                      np.linalg.inv(evmat.UsVb(1/0.123, *args)))
 
 
 class TestClassWET4(unittest.TestCase):

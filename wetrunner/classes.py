@@ -75,22 +75,24 @@ class WETrunner(object):
 
         Returns an instance of `wcxf.WC`.
         """
-        pi = self._get_running_parameters(self.scale_in, self.f)
-        po = self._get_running_parameters(scale_out, self.f)
+        p_i = self._get_running_parameters(self.scale_in, self.f)
+        p_o = self._get_running_parameters(scale_out, self.f)
         betas = self._betas(self.f)
-        Etas = (pi['alpha_s'] / po['alpha_s'])
+        Etas = (p_i['alpha_s'] / p_o['alpha_s'])
         if self.f != 5:  # for WET-4 and WET-3
             # to account for the fact that beta0 is hardcoded for f=5 in the
             # evolution matrices
             Etas = Etas**(self._betas(5) / self._betas(self.f))
-            pi['alpha_e'] = 0  # because QED evolution is not consistent yet
+            p_i['alpha_e'] = 0  # because QED evolution is not consistent yet
+        if scale_out > self.scale_in:
+            p_i['alpha_e'] = 0  # because QED evolution is not consistent yet
         C_out = OrderedDict()
         for sector in wcxf.EFT[self.eft].sectors:
             if sector in definitions.sectors:
                 if sectors == 'all' or sector in sectors:
                     C_out.update(rge.run_sector(sector, self.C_in,
-                                 Etas, pi['alpha_s'], pi['alpha_e'],
-                                 pi['m_b'], pi['m_c'], pi['m_tau'],
+                                 Etas, p_i['alpha_s'], p_i['alpha_e'],
+                                 p_i['m_b'], p_i['m_c'], p_i['m_tau'],
                                  betas))
         C_out = {k: v for k, v in C_out.items() if v != 0}
         return wcxf.WC(eft=self.eft, basis='Bern',
