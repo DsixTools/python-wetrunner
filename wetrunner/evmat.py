@@ -103,9 +103,38 @@ def UsVb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
                     [0, 0, 0, Etas**(4 / 23), 16/Etas**(12 / 23) - 16 * Etas**(4 / 23)],
                     [0, 0, 0, 0, 1/Etas**(12 / 23)]])
 
+
 @lru_cache(maxsize=32)
 def UeVb(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
-    return np.zeros((5, 5))  # TODO
+    return np.array([[-0.065217 * Alphaem * (6.6667 * Etas**1.0 - 6.6667) / Alphas,
+                      -0.065217 * Alphaem * (42.667 * Etas**1.0 - 42.667) / Alphas,
+                      0, 0, 0],
+                     [-0.065217 * Alphaem * (-0.66667 * Etas**1.0 + 0.66667) / Alphas,
+                      -0.065217 * Alphaem * (-6.6667 * Etas ** 1.0 + 6.6667) / Alphas,
+                      0, 0, 0],
+                     [0, 0, -0.065217 * Alphaem * (-6.6667 * Etas**(-0.52174) +
+                       6.6667 * Etas**0.47826) / Alphas, -0.065217 * Alphaem *
+                      (6.2906 * Etas**(-0.52174) - 6.2906 * Etas**1.1739) / Alphas,
+                      -1.0455 * Alphaem * (
+                          5.9097e-16 * Etas**(-0.52174) - 5.9097e-16 * Etas**0.47826) / Alphas + 1.0435 * Alphaem * (6.2906 * Etas**(-0.52174) - 6.2906 * Etas**1.1739) / Alphas],
+                     [0, 0, -0.065217 * Alphaem *
+                      (-2.1905 * Etas**0.17391 + 2.1905 * Etas**0.47826) / Alphas,
+                      -0.06509 * Alphaem * (-6.3029 * Etas**(-0.52174) + 6.3029 * Etas**1.1739) / Alphas -
+                      0.065217 * Alphaem * (2.2222 * Etas**0.17391 -
+                                            2.2222 * Etas**1.1739) / Alphas,
+                      -1.0435 * Alphaem * (-6.6667 * Etas**(
+                          -0.52174) + 6.6667 * Etas**0.47826) / Alphas
+                          + 1.0414 * Alphaem * (-6.3029 * Etas**(-0.52174)
+                          + 6.3029 * Etas**1.1739) / Alphas - 1.0455
+                          * Alphaem * (-8.7448 * Etas**0.17391 + 8.7448
+                          * Etas**0.47826) / Alphas + 1.0435 * Alphaem
+                          * (2.2222 * Etas**0.17391 - 2.2222 * Etas**1.1739) / Alphas],
+                     [0, 0, 0, -0.0040682 * Alphaem *
+                      (-6.3029 * Etas**(-0.52174) +
+                       6.3029 * Etas**1.1739) / Alphas,
+                      -0.065217 * Alphaem * (-6.6667 * Etas**(-0.52174)
+                      + 6.6667 * Etas**0.47826) / Alphas + 0.06509 * Alphaem * (
+                      -6.3029 * Etas**(-0.52174) + 6.3029 * Etas**1.1739) / Alphas]])
 
 
 @lru_cache(maxsize=32)
