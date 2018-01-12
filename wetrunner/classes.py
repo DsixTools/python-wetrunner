@@ -84,8 +84,6 @@ class WETrunner(object):
             # evolution matrices
             Etas = Etas**(self._betas(5) / self._betas(self.f))
             p_i['alpha_e'] = 0  # because QED evolution is not consistent yet
-        if scale_out > self.scale_in:
-            p_i['alpha_e'] = 0  # because QED evolution is not consistent yet
         C_out = OrderedDict()
         for sector in wcxf.EFT[self.eft].sectors:
             if sector in definitions.sectors:
