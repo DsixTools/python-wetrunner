@@ -92,7 +92,8 @@ class WETrunner(object):
                                  Etas, p_i['alpha_s'], p_i['alpha_e'],
                                  p_i['m_b'], p_i['m_c'], p_i['m_tau'],
                                  betas))
-        C_out = {k: v for k, v in C_out.items() if v != 0}
+        C_out = {k: v for k, v in C_out.items()
+                 if v != 0 and k in wcxf.Basis[self.eft, 'Bern'].all_wcs}
         return wcxf.WC(eft=self.eft, basis='Bern',
                        scale=scale_out,
                        values=wcxf.WC.dict2values(C_out))
