@@ -46,11 +46,21 @@ for qq in ['sbsd', 'dbds']:
         sectors[qq]['IV'].append(['{}{}{}'.format(i, p, qq)
                                   for i in range(1, 11, 2)])
 
+
+qqdict = {
+'sb': ['uu', 'dd', 'cc', 'ss', 'bb'],
+'db': ['uu', 'ss', 'cc', 'dd', 'bb'],
+'ds': ['uu', 'bb', 'cc', 'dd', 'ss'],
+}
 # class 5
-for qq in ['sb', 'db']:
+for qq in ['sb', 'db', 'ds']:
+    if qq == 'ds':
+        sname = 'sd'
+    else:
+        sname = qq
     for p in ['', 'p']:
         _C = []
-        for pp in ['uu', 'dd', 'cc', 'ss', 'bb']:
+        for pp in qqdict[qq]:
             if pp[0] in qq:
                 _C += ['{}{}{}{}'.format(i, p, qq, pp)
                        for i in range(1, 11, 2)]  # 1, 3, 5, 7, 9
@@ -63,7 +73,7 @@ for qq in ['sb', 'db']:
             # e.g. 1sbee
             _C += ['{}{}{}{}'.format(i, p, qq, 2 * l)
                    for i in range(1, 11, 2)]  # 1, 3, 5, 7, 9
-        sectors[qq]['V'].append(_C)
+        sectors[sname]['V'].append(_C)
 
 # class 5b
 for qq in ['sb', 'db']:

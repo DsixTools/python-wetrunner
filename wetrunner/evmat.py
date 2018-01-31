@@ -2,7 +2,7 @@
 
 import numpy as np
 from math import sqrt, pi, log
-from wetrunner.UsV import get_UsV
+from wetrunner.UsV import get_UsV, get_UsVdeltaS
 from wetrunner.UeV import get_UeV
 from functools import lru_cache
 
@@ -90,6 +90,10 @@ def UeIV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
 @lru_cache(maxsize=32)
 def UsV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
     return get_UsV(Etas, mb, mc, mtau)
+
+@lru_cache(maxsize=32)
+def UsVdeltaS(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):
+    return get_UsVdeltaS(Etas)
 
 @lru_cache(maxsize=32)
 def UeV(Etas, Alphas, Alphaem, mb, mc, mtau, Betas):

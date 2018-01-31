@@ -18,7 +18,10 @@ def run_sector(sector, C_in, Etas, Alphas, Alphaem, mb, mc, mtau, betas):
                 # nothing to do for SM-like WCs or qqnunu operators
                 C_result = C_input
             else:
-                Us = getattr(evmat, 'Us' + classname)(*args)
+                if sector == 'sd':
+                    Us = evmat.UsVdeltaS(*args)
+                else:
+                    Us = getattr(evmat, 'Us' + classname)(*args)
                 Ue = getattr(evmat, 'Ue' + classname)(*args)
                 C_result = (Us + Ue) @ C_input
             for j in range(len(C_result)):
