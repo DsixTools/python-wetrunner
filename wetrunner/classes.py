@@ -58,8 +58,10 @@ class WETrunner(object):
         p['alpha_s'] = qcd.alpha_s(scale, self.f, self.parameters['alpha_s'])
         p['m_b'] = qcd.m_b(self.parameters['m_b'], scale, self.f, self.parameters['alpha_s'])
         p['m_c'] = qcd.m_c(self.parameters['m_c'], scale, self.f, self.parameters['alpha_s'])
+        p['m_s'] = qcd.m_s(self.parameters['m_s'], scale, self.f, self.parameters['alpha_s'])
         # running ignored for alpha_e and lepton mass
         p['alpha_e'] = self.parameters['alpha_e']
+        p['m_mu'] = self.parameters['m_mu']
         p['m_tau'] = self.parameters['m_tau']
         return p
 
@@ -90,7 +92,8 @@ class WETrunner(object):
                 if sectors == 'all' or sector in sectors:
                     C_out.update(rge.run_sector(sector, self.C_in,
                                  Etas, p_i['alpha_s'], p_i['alpha_e'],
-                                 p_i['m_b'], p_i['m_c'], p_i['m_tau'],
+                                 p_i['m_b'], p_i['m_c'], p_i['m_s'],
+                                 p_i['m_mu'], p_i['m_tau'],
                                  betas))
         C_out = {k: v for k, v in C_out.items()
                  if v != 0 and k in wcxf.Basis[self.eft, 'Bern'].all_wcs}

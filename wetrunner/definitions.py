@@ -33,7 +33,7 @@ for qq in ['cb', 'ub', 'us', 'cs', 'cd', 'ud']:
 for dd in ['sb', 'db', 'ds']:
     for uu in ['uc', 'cu']:
         if dd == 'ds':
-            sname = 'sd' + uu  # e.g. sbuc
+            sname = 'sd' + uu[::-1]  # e.g. dsuc -> sdcu
         else:
             sname = dd + uu  # e.g. sbuc
         for p in ['', 'p']:
@@ -76,13 +76,16 @@ for qq in ['sb', 'db', 'ds']:
         sectors[sname]['V'].append(_C)
 
 # class 5b
-for qq in ['sb', 'db']:
+for qq in ['sb', 'db', 'ds']:
     for l in ['e', 'mu', 'tau']:
         for lp in ['e', 'mu', 'tau']:
             if l != lp:
-                sname = qq + l + lp
+                if qq == 'ds':
+                    sname = 'sd' + lp + l
+                else:
+                    sname = qq + l + lp
                 for p in ['', 'p']:
-                    sectors[sname]['Vb'].append(['{}{}{}'.format(i, p, sname)
+                    sectors[sname]['Vb'].append(['{}{}{}'.format(i, p,  qq + l + lp)
                                                  for i in range(1, 11, 2)])
 
 # class 5nu

@@ -4,7 +4,7 @@
 import numpy as np
 
 
-def get_UsV(Etas, mb, mc, mtau):
+def get_UsV(Etas, mb, mc, ms, mmu, mtau):
 
 	UsV = np.eye(57)
 
@@ -606,7 +606,7 @@ def get_UsV(Etas, mb, mc, mtau):
 	return UsV
 
 
-def get_UsVdeltaS(Etas,yd,yc,yb,ymu,ytau):
+def get_UsVdeltaS(Etas, yd, yc, yb, ymu, ytau):
 	UsVdeltaS = np.array([[0.118519/Etas**1.04348 + 0.0438411/Etas**0.899395 - 0.0740741/Etas**0.521739 - 0.0639027/Etas**0.422989 +
 	         0.948148*Etas**0.130435 + 0.249511*Etas**0.145649 - 0.190476*Etas**0.26087 - 0.0315661*Etas**0.408619,
 	        0.158025/Etas**1.04348 + 0.0248926/Etas**0.899395 + 0.0493827/Etas**0.521739 + 0.0514486/Etas**0.422989 -

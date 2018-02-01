@@ -8,8 +8,8 @@ from collections import OrderedDict
 import numpy as np
 
 
-def run_sector(sector, C_in, Etas, Alphas, Alphaem, mb, mc, mtau, betas):
-    args = Etas, Alphas, Alphaem, mb, mc, mtau, betas
+def run_sector(sector, C_in, Etas, Alphas, Alphaem, mb, mc, ms, mmu, mtau, betas):
+    args = Etas, Alphas, Alphaem, mb, mc, ms, mmu, mtau, betas
     Cdictout = OrderedDict()
     for classname, C_lists in sectors[sector].items():
         for i, keylist in enumerate(C_lists):
