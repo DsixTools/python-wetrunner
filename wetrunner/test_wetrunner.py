@@ -83,8 +83,11 @@ class TestEvolutionMatrices(unittest.TestCase):
                                       np.linalg.inv(evmat.UsV(1/0.123, *args)))
         npt.assert_array_almost_equal(evmat.UsVdeltaS(0.123, *args)
                                       @ evmat.UsVdeltaS(1/0.123, *args),
-                                      np.eye(57),
-                                      decimal=1)  # FIXME not precise enough!
+                                      np.eye(57))
+        npt.assert_array_almost_equal(evmat.UsVdeltaS4F(0.123, *args),
+                            np.linalg.inv(evmat.UsVdeltaS4F(1/0.123, *args)))
+        npt.assert_array_almost_equal(evmat.UsVdeltaS3F(0.123, *args),
+                            np.linalg.inv(evmat.UsVdeltaS3F(1/0.123, *args)))
         npt.assert_array_almost_equal(evmat.UsVb(0.123, *args),
                                       np.linalg.inv(evmat.UsVb(1/0.123, *args)))
 
