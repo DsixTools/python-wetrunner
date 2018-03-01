@@ -73,7 +73,7 @@ for qq in ['sb', 'db', 'ds']:
             # e.g. 1sbee
             _C += ['{}{}{}{}'.format(i, p, qq, 2 * l)
                    for i in range(1, 11, 2)]  # 1, 3, 5, 7, 9
-        sectors[sname]['V'].append(_C)
+        sectors[sname]['V' + qq].append(_C)
 
 # class 5b
 for qq in ['sb', 'db', 'ds']:
