@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 
 setup(name='wetrunner',
-      version='0.1',
+      version='0.2',
       author='Jason Aebischer, Xuanyou Pan, David M. Straub',
       author_email='jason.aebischer@tum.de, xuanyou.pan@tum.de, david.straub@tum.de',
       url='https://github.com/DsixTools/python-wetrunner',
