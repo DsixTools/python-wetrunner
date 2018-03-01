@@ -46,11 +46,6 @@ class WETrunner(object):
         if parameters is not None:
             self.parameters.update(parameters)
 
-    @staticmethod
-    def _betas(f):
-        """QCD beta function for `f` dynamical quark flavours."""
-        return (11*3 - 2*f)/3
-
     def _get_running_parameters(self, scale, f):
         """Get the running parameters (e.g. quark masses and the strong
         coupling at a given scale."""
@@ -82,13 +77,7 @@ class WETrunner(object):
         """
         p_i = self._get_running_parameters(self.scale_in, self.f)
         p_o = self._get_running_parameters(scale_out, self.f)
-        betas = self._betas(self.f)
         Etas = (p_i['alpha_s'] / p_o['alpha_s'])
-        if self.f != 5:  # for WET-4 and WET-3
-            # to account for the fact that beta0 is hardcoded for f=5 in the
-            # evolution matrices
-            Etas = Etas**(self._betas(5) / self._betas(self.f))
-            p_i['alpha_e'] = 0  # because QED evolution is not consistent yet
         C_out = OrderedDict()
         for sector in wcxf.EFT[self.eft].sectors:
             if sector in definitions.sectors:
